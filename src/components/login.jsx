@@ -10,7 +10,7 @@ function Login(props) {
       username,
       password
     };
-    console.log(user, "fuck fuvck fuccccccccck");
+
     fetch("/login", {
       method: "POST",
       headers: {
