@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
 import { Login } from './components/login.jsx'
 import { SignUp } from './components/signup.jsx'
+import './App.css';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-
 class App extends Component {
   render() {
     return (
@@ -19,13 +18,8 @@ class App extends Component {
           </nav>
           <hr />
           <Switch>
-            <Route exact path='/login'
-              component={Login}
-            />
-            <Route path='/signup'
-              component={SignUp}
-            />
-
+            <Route exact path='/login' component={Login} />
+            <Route path='/signup' component={SignUp} />
           </Switch>
         </div>
       </Router>
