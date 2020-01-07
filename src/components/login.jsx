@@ -21,27 +21,22 @@ function Login(props) {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        <input
-          placeholder="Enter user name"
-          type="text"
-          value={username}
-          onChange={e => {
-            setUsername(e.target.value);
-          }}
-        ></input>
-      </label>
-      <lable>
-        {" "}
-        <input
-          placeholder="enter password"
-          type="password"
-          value={password}
-          onChange={e => {
-            setPassword(e.target.value);
-          }}
-        ></input>
-      </lable>
+      <input
+        placeholder="Enter user name"
+        type="text"
+        value={username}
+        onChange={e => {
+          setUsername(e.target.value);
+        }}
+      ></input>{" "}
+      <input
+        placeholder="enter password"
+        type="password"
+        value={password}
+        onChange={e => {
+          setPassword(e.target.value);
+        }}
+      ></input>
       <input type="submit" />
     </form>
   );

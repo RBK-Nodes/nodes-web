@@ -29,34 +29,31 @@ function SignUp(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        <input
-          placeholder="Enter user name"
-          type="text"
-          value={username}
-          onChange={e => {
-            setUsername(e.target.value);
-          }}
-        ></input>
-      </label>
-      <label>
-        <input
-          placeholder="enter password"
-          type="password"
-          value={password}
-          onChange={e => {
-            setPassword(e.target.value);
-          }}
-        ></input>
-      </label>
-      <label>
-        <input
-          placeholder="confirm your password"
-          type="password"
-          value={confirmPassword}
-          onChange={e => setconfirmPassword(e.target.value)}
-        ></input>
-      </label>
+      <input
+        placeholder="Enter user name"
+        type="text"
+        value={username}
+        onChange={e => {
+          setUsername(e.target.value);
+        }}
+      ></input>
+
+      <input
+        placeholder="enter password"
+        type="password"
+        value={password}
+        onChange={e => {
+          setPassword(e.target.value);
+        }}
+      ></input>
+
+      <input
+        placeholder="confirm your password"
+        type="password"
+        value={confirmPassword}
+        onChange={e => setconfirmPassword(e.target.value)}
+      ></input>
+
       <button type="submit"> submit</button>
     </form>
   );
