@@ -1,10 +1,13 @@
 import React from "react";
 import io from 'socket.io-client';
-io('http://localhost:5000')
-//{ useState }
+
 export function Chat(props) {
     //using hooks
+
     var socketHandler = () => {
+        io('http://localhost:5000').on('connect', () => {
+            console.log('connected!')
+        })
 
     }
 

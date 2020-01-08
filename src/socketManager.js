@@ -1,4 +1,7 @@
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:5000');
+io('http://localhost:5000').on('connect', () => {
+    console.log('connected!')
+})
+
 module.exports = { socket }

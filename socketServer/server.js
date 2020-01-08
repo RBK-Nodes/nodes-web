@@ -1,15 +1,12 @@
-const server = require('http').createServer();
-
-const io = require('socket.io')(server, {
-    path: '/test',
-    serveClient: true,
-    // below are engine.IO options
-    pingInterval: 10000,
-    pingTimeout: 5000,
-    cookie: false
+var express = require('express')
+var bodyParser = require('body-parser')
+var app = express();
+var http = require('http').Server(app);
+var io = module.exports.io = require('socket.io')(http);
+var server = http.listen(5000, () => {
+    console.log('socketIO is running on port', server.address().port);
 });
-server.listen(5000);
-console.log(`listening on port 5000`)
-io.on('connection', () => {
-    console.log('a new connection')
+io.on('connection', (socket) => {
+    console.log(`user connected`)
+    //handling requests
 })
