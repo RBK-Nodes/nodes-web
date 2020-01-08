@@ -7,8 +7,8 @@ import Input from '@material-ui/core/Input';
 //set room name id here !!!
 
 var socketed = io('http://localhost:5001', {
-    Headers: {
-        authorization: `bearer ${localStorage.getItem("token")}`
+    query: {
+        'authorization': `bearer ${localStorage.getItem("token")}`
     }
 })
 
