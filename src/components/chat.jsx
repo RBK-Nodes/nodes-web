@@ -1,34 +1,36 @@
 import React, { useState, useEffect } from "react";
 import io from 'socket.io-client';
 import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input'
+import Input from '@material-ui/core/Input';
 
 
 //set room name id here !!!
 
-useEffect(() => {
-    var soket = io('http://localhost:5000/room1').on('connect', () => {
-        console.log('connected!')
-    })
+var socketed = io('http://localhost:5000/room1')
+socketed.on('connect', () => {
+    console.log('connected!');
 })
 
 export function Chat(props) {
     //using hooks
     const [message, setMessage] = useState('')
+    const [socket, setSocket] = useState()
 
+    useEffect(() => {
+        setSocket(socketed)
+    }, [])
 
     var handleSubmit = (e) => {
         e.preventDefault()
-
         //submit the form 
+        socket.emit("MESSAGE", { "message": message, "senderNickname": 'adam' })
         setMessage('');
-        //here I want to use 
-        io.emit(message)
     }
+
     return (
-        <div >
+        < div >
             THIS is the CHAT SECTION
-            <br />
+            < br />
             <br />
             <br />
             <div className="message-container">

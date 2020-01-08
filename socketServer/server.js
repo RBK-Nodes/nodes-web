@@ -10,5 +10,8 @@ var server = http.listen(5000, () => {
 const roomTest = io.of('/room1')
 roomTest.on('connection', (socket) => {
     console.log(`user connected`)
-    //handling requests
+    roomTest.on('MESSAGE', (data) => {
+        console.log(`${data}`)
+    })
+    // roomTest.join()
 })

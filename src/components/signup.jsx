@@ -8,6 +8,7 @@ export function SignUp(props) {
     const [password, setPassword] = useState("");
     const [confirmPassword, setconfirmPassword] = useState("");
     const [correctPass, setcorrectPass] = useState();
+
     var handleSubmit = e => {
         e.preventDefault();
         passwordChecker()
@@ -20,13 +21,23 @@ export function SignUp(props) {
             password
         };
 
-        fetch("/signup", {
+        fetch("https://nodes-chat-app.herokuapp.com/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json;charset=utf-8"
             },
             body: JSON.stringify(user)
-        });
+        }).then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+                localStorage.setItem("username", username)
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("refreshToken", data.refreshToken);
+
+                setPassword('')
+                setUsername('')
+                setconfirmPassword('')
+            })
     };
     var passwordChecker = () => {
         password === confirmPassword ? setcorrectPass(true) : setcorrectPass(false);
