@@ -1,0 +1,11 @@
+
+body {
+    background-image: url('./cover.jpg');
+    background-size: auto;
+}
+.signup-container {
+    height: 100px;
+}
+nav>ul{
+    display: flex;
+}
