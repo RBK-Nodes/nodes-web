@@ -6,7 +6,9 @@ var io = module.exports.io = require('socket.io')(http);
 var server = http.listen(5000, () => {
     console.log('socketIO is running on port', server.address().port);
 });
-io.on('connection', (socket) => {
+
+const roomTest = io.of('/room1')
+roomTest.on('connection', (socket) => {
     console.log(`user connected`)
     //handling requests
 })
