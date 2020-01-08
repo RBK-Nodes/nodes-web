@@ -70,4 +70,3 @@ export function SignUp(props) {
     )
 }
 export default SignUp
-
