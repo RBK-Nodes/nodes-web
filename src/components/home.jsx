@@ -2,7 +2,7 @@ import { Redirect } from "react-router-dom";
 import React, { useState } from 'react'
 import { Chat } from './chat.jsx'
 import Axios from 'axios';
-import Input from '@material-ui/core/Input'
+// import Input from '@material-ui/core/Input'
 
 export function Home(props) {
     const [loggedIn, setLoggedIn] = useState(true)
@@ -14,7 +14,7 @@ export function Home(props) {
     // setInterval(function () {
     let headers = {
         'Content-Type': 'application/json',
-        'authorization': `bearer ${localStorage.getItem("token")}`
+        'Authorization': `Bearer ${localStorage.getItem("token")}`
     }
 
     Axios.post('https://nodes-chat-app.herokuapp.com/auth', {}, {
