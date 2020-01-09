@@ -7,10 +7,32 @@ body {
     height: 100px;
 }
 nav>ul{
-    flex: right;
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%s;
+    background-color: #f1f1f1;
 }
-h2{
-    align-content: center;
+nav>ul a{
+    display: block;
+    color: #000;
+    padding: 20px 16px;
+    text-decoration: none;
+}
+#logo{
+    padding-left: 1000px;
+    float:right;
+    height: 10%;
+    width: 10%;
+}
+
+nav>ul a:hover {
+    background-color: #555;
+    color: white;
+  }
+h4{
+    padding-left:890px;
 }
 :root {
     --main-color: #5ea3d0;
@@ -36,11 +58,11 @@ html, body {
     display: ruby-base-container;
     align-content: center;
 }
-.app {
+.home {
     display: grid;
     height: 100%;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 60px;
+    grid-template-rows:  0.1  60px;
     grid-template-areas: 
         "r m m m m m"
         "r m m m m m"
@@ -49,26 +71,56 @@ html, body {
         "r m m m m m"
         "n f f f f f";
 }
+.signup-form{
+    display: inline-table;
+    padding-left: 100px;
+    
+}
+.signup-container{
+    width: 33%;
+    padding: 8% 25% 25% 40%;
+    border-style: solid;
+    border-width: 2px 10px 4px 20px
+}
+#signupImg{
+height: 130%;
+width: 50%;
+}
 
+.signup-form{
+    display: inline-table;
+    padding-left: 100px;
+    
+}
+.signIn-container{
+    width: 33%;
+    padding: 10% 25% 25% 40%;
+    border-style: solid;
+    border-width: 2px 10px 4px 20px
+}
 
-.new-room-form {
-    grid-area: n;
+#signinImg{
+    height: 190%;
+    width: 50%;
 }
 
 .friends-list {
     grid-area: r;
+    
 }
 
-.message-list {
+.message-list{
     grid-area: m;
-}
-
+    height: 10000000px;
+    width: 150%;
+} 
+/* 
 .send-message-form {
-    grid-area: f;
-}
+
+}  */
 
 /* REST OF CSS */
-.rooms-list {
+.friends-list {
     box-sizing: border-box;
     padding: 10px;
     background-color: var(--main-color);

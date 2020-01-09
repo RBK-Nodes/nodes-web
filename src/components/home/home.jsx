@@ -2,6 +2,7 @@ import { Redirect } from "react-router-dom";
 import React, { useState } from 'react'
 import Chat from '../chat/chat.jsx'
 import SearchFriends from '../friends/searchFriends/SearchFriends.jsx'
+// import Swal from 'sweetalert2'
 
 import FriendsList from '../friends/friendsList/friendsList.jsx'
 
@@ -55,8 +56,7 @@ export function Home(props) {
 
 
     return (
-        <div className="app">
-            <SearchFriends />
+        <div className="home">
             <FriendsList />
             <Chat />
         </div>

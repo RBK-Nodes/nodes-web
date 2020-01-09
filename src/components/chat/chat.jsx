@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 
 import MessageList from '../messages/MessagesList.jsx'
+import SendMessageForm from "../messages/sendMessageForm.jsx";
 //set room name id here !!!
 
 var socketed = io('http://192.168.137.82:5001/room1', {
@@ -33,13 +34,18 @@ export function Chat(props) {
     }
 
     return (
-        < div >
+        < div className="chat">
+            <MessageList />
+            <SendMessageForm />
 
-            <div className="">
-                <MessageList />
+            {/* <div
+                className="send-message-form"
+            >
+
                 <form
                     onSubmit={handleSubmit}
-                    style={{ padding: "100px" }}>
+                // style={{ padding: "100px" }}
+                >
                     <Input
                         type="text"
                         value={message}
@@ -50,7 +56,7 @@ export function Chat(props) {
                         color="secondary"
                     >Send</Button>
                 </form>
-            </div>
+            </div> */}
         </div >
     )
 }
