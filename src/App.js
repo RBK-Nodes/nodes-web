@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Login } from './components/login.jsx'
-import { SignUp } from './components/signup.jsx'
-import { Home } from './components/home.jsx'
+import { Login } from './components/login/login.jsx'
+import { SignUp } from './components/signup/signup.jsx'
+import { Home } from './components/home/home.jsx'
 import './App.css';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';

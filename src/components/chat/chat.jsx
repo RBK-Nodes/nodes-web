@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 
-import MessageList from './messages/MessagesList.jsx'
+import MessageList from '../messages/MessagesList.jsx'
 //set room name id here !!!
 
 var socketed = io('http://192.168.137.82:5001/room1', {

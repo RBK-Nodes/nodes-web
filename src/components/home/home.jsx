@@ -1,6 +1,6 @@
 import { Redirect } from "react-router-dom";
 import React, { useState } from 'react'
-import { Chat } from './chat.jsx'
+import { Chat } from '../chat/chat.jsx'
 import Axios from 'axios';
 // import Input from '@material-ui/core/Input'
 
