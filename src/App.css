@@ -7,7 +7,6 @@ body {
     height: 100px;
 }
 nav>ul{
-    margin-top: 100px;
     display: flex;
     list-style-type: none;
     margin: 0;
@@ -18,7 +17,7 @@ nav>ul{
 nav>ul a{
     display: block;
     color: #000;
-    padding: 8px 16px;
+    padding: 20px 16px;
     text-decoration: none;
 }
 
@@ -26,8 +25,7 @@ nav>ul a:hover {
     background-color: #555;
     color: white;
   }
-h2{
-    text-size-adjust: 140%;
+h4{
     padding-left:890px;
 }
 :root {
