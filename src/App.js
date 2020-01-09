@@ -15,11 +15,12 @@ class App extends Component {
             <ul className="navbar-nav mr-auto">
               <ul><Link to={'/login'} className="nav-link"> Login </Link></ul>
               <ul><Link to={'/signup'} className="nav-link"> Signup </Link></ul>
-              <ul><Link to={'/home'} className="nav-link"> Home </Link></ul>
+              {/* <ul><Link to={'/home'} className="nav-link"> Home </Link></ul> */}
               <img id="logo" src="https://appdevelopermagazine.com/images/dir/Nodes_Logo_RGB-1024x365_8a7k7464.png"></img>
             </ul>
           </nav>
           <Switch >
+            <Route exact path='/' component={Login} />
             <Route exact path='/login' component={Login} />
             <Route path='/signup' component={SignUp} />
             <Route path='/home' component={Home} />

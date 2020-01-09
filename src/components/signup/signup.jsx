@@ -52,7 +52,6 @@ export function SignUp(props) {
 
     return (
         <div className="signup-container">
-            <img id="signupImg" src="https://databox.com/wp-content/themes/databox/inc/img/signup/signup-1.png" alt="" />
             <h1>JOIN OUR COMMUNITY</h1>
             <form className="signup-form"
                 onSubmit={handleSubmit}>

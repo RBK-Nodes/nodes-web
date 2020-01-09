@@ -45,7 +45,6 @@ export function Login(props) {
             <h1>SIGN IN</h1>
             <form className="signin-form"
                 onSubmit={handleSubmit}>
-                <label >  </label>
                 <Input
                     placeholder="Enter user name"
                     type="text"
@@ -58,7 +57,6 @@ export function Login(props) {
                 <br />
                 <br />
 
-                <label >  </label>
                 <Input
                     placeholder="enter password"
                     type="password"
@@ -70,8 +68,7 @@ export function Login(props) {
                 ></Input>
                 <br />
                 <br />
-
-                <Button type="submit" variant="contained" color="primary" >SUBMIT</Button>
+                <Button type="submit" variant="contained" color="primary" >SIGN IN</Button>
             </form>
         </div>
     )
