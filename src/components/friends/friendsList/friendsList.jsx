@@ -5,7 +5,7 @@ import Input from '@material-ui/core/Input'
 class FriendsList extends React.Component {
     render() {
         return (
-            <div className="rooms-list">
+            <div className="friends-list">
                 <form>
                     <Input
                         type="text"
