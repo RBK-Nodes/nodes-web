@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import io from 'socket.io-client';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
-
 var socketed = io('http://localhost:5001', {
     query: {
         'authorization': `bearer ${localStorage.getItem("token")}`
@@ -27,6 +26,7 @@ export function SendMessageForm() {
         socket.emit("MESSAGE", { "message": message, "senderNickname": 'adam' })
         setMessage('');
     }
+
     return (
         <div>
             <form
@@ -46,6 +46,4 @@ export function SendMessageForm() {
         </div >
     )
 }
-
-
 export default SendMessageForm
