@@ -41,7 +41,7 @@ export function Login(props) {
 
     return (
         <div className="signup-container">
-            <img id="signinImg" src="" alt="" />
+            <img id="signinImg" src="../../vpn_key-24px.svg" alt="" />
             <h1>SIGN IN</h1>
             <form className="signin-form"
                 onSubmit={handleSubmit}>

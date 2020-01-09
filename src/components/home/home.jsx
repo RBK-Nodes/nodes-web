@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Chat from '../chat/chat.jsx'
 import SearchFriends from '../friends/searchFriends/SearchFriends.jsx'
 // import Swal from 'sweetalert2'
+import Button from '@material-ui/core/';
 
 import FriendsList from '../friends/friendsList/friendsList.jsx'
 
