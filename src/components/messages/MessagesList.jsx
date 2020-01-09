@@ -18,7 +18,10 @@ const DUMMY_DATA = [
 class MessageList extends React.Component {
     render() {
         return (
-            <div className="message-list">
+            <div className="message-list"
+                style={{ width: "186%", height: "640px" }}
+
+            >
                 {DUMMY_DATA.map((message, index) => {
                     return (
                         <div key={index} className="message">

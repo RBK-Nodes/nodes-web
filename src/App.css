@@ -52,11 +52,11 @@ html, body {
     display: ruby-base-container;
     align-content: center;
 }
-.app {
+.home {
     display: grid;
     height: 100%;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 60px;
+    grid-template-rows:  0.1  60px;
     grid-template-areas: 
         "r m m m m m"
         "r m m m m m"
@@ -67,21 +67,22 @@ html, body {
 }
 
 
-.new-room-form {
-    grid-area: n;
-}
+
 
 .friends-list {
     grid-area: r;
+    
 }
 
-.message-list {
+.message-list{
     grid-area: m;
-}
-
+    height: 10000000px;
+    width: 150%;
+} 
+/* 
 .send-message-form {
-    grid-area: f;
-}
+
+}  */
 
 /* REST OF CSS */
 .friends-list {

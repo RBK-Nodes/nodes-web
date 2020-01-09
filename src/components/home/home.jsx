@@ -55,8 +55,7 @@ export function Home(props) {
 
 
     return (
-        <div className="app">
-            <SearchFriends />
+        <div className="home">
             <FriendsList />
             <Chat />
         </div>
