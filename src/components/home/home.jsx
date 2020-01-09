@@ -1,6 +1,10 @@
 import { Redirect } from "react-router-dom";
 import React, { useState } from 'react'
-import { Chat } from '../chat/chat.jsx'
+import Chat from '../chat/chat.jsx'
+import SearchFriends from '../friends/searchFriends/SearchFriends.jsx'
+
+import FriendsList from '../friends/friendsList/friendsList.jsx'
+
 import Axios from 'axios';
 // import Input from '@material-ui/core/Input'
 
@@ -51,7 +55,9 @@ export function Home(props) {
 
 
     return (
-        <div >
+        <div className="app">
+            <SearchFriends />
+            <FriendsList />
             <Chat />
         </div>
     )

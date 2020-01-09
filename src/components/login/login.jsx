@@ -46,6 +46,7 @@ export function Login(props) {
                 onChange={e => {
                     setUsername(e.target.value);
                 }}
+                required
             ></Input>
             <label > password </label>
             <Input
@@ -55,6 +56,7 @@ export function Login(props) {
                 onChange={e => {
                     setPassword(e.target.value);
                 }}
+                required
             ></Input>
             <br />
             <Button type="submit" variant="contained" color="primary" >SUBMIT</Button>

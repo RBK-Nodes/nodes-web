@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div >
           <h2>Welcome to CHAT APP</h2>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <ul className="navbar-nav mr-auto">
@@ -26,7 +26,6 @@ class App extends Component {
             <Route exact path='/login' component={Login} />
             <Route path='/signup' component={SignUp} />
             <Route path='/home' component={Home} />
-
           </Switch>
         </div>
       </Router>

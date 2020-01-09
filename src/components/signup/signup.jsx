@@ -55,6 +55,7 @@ export function SignUp(props) {
                     onChange={e => {
                         setUsername(e.target.value);
                     }}
+                    required
                 ></Input>
                 <br />
                 <label > password </label>
@@ -65,6 +66,7 @@ export function SignUp(props) {
                     onChange={e => {
                         setPassword(e.target.value);
                     }}
+                    required
                 ></Input>
                 <br />
                 <label > Confirm password </label>
@@ -73,6 +75,7 @@ export function SignUp(props) {
                     type="password"
                     value={confirmPassword}
                     onChange={e => setconfirmPassword(e.target.value)}
+                    required
                 ></Input>
                 <br />
                 <Button type="submit" variant="contained" color="primary" >SUBMIT</Button>

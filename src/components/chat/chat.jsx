@@ -35,11 +35,11 @@ export function Chat(props) {
     return (
         < div >
 
-            <div className="send-message-form">
+            <div className="">
                 <MessageList />
                 <form
                     onSubmit={handleSubmit}
-                    style={{ padding: "300px" }}>
+                    style={{ padding: "100px" }}>
                     <Input
                         type="text"
                         value={message}
@@ -51,7 +51,7 @@ export function Chat(props) {
                     >Send</Button>
                 </form>
             </div>
-
         </div >
     )
 }
+export default Chat
