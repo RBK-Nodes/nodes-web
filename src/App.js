@@ -16,7 +16,7 @@ class App extends Component {
               <ul><Link to={'/login'} className="nav-link"> Login </Link></ul>
               <ul><Link to={'/signup'} className="nav-link"> Signup </Link></ul>
               <ul><Link to={'/home'} className="nav-link"> Home </Link></ul>
-              <h4>Welcome to CHAT APP</h4>
+              <img id="logo" src="https://appdevelopermagazine.com/images/dir/Nodes_Logo_RGB-1024x365_8a7k7464.png"></img>
             </ul>
           </nav>
           <Switch >

@@ -11,7 +11,7 @@ export function SignUp(props) {
     const [badPass, setBadPass] = useState(false)
     var handleSubmit = e => {
         e.preventDefault();
-        
+
         if (!passwordChecker()) {
             //change to set the class of the form to red  an
             setBadPass(true);
@@ -46,15 +46,17 @@ export function SignUp(props) {
         return password === confirmPassword;
     };
 
-    if(isLogged) {
+    if (isLogged) {
         return <Redirect to='/home' />
-     }
+    }
 
     return (
         <div className="signup-container">
+            <img id="signupImg" src="https://databox.com/wp-content/themes/databox/inc/img/signup/signup-1.png" alt="" />
+            <h1>JOIN OUR COMMUNITY</h1>
             <form className="signup-form"
                 onSubmit={handleSubmit}>
-                <label > username </label>
+                <label >  </label>
                 <Input
                     placeholder="Enter user name"
                     type="text"
@@ -65,7 +67,9 @@ export function SignUp(props) {
                     required
                 ></Input>
                 <br />
-                <label > password </label>
+                <br />
+
+                <label >  </label>
                 <Input
                     placeholder="enter password"
                     type="password"
@@ -76,7 +80,9 @@ export function SignUp(props) {
                     required
                 ></Input>
                 <br />
-                <label > Confirm password </label>
+                <br />
+
+                <label >   </label>
                 <Input
                     placeholder="confirm your password"
                     type="password"
@@ -85,7 +91,9 @@ export function SignUp(props) {
                     required
                 ></Input>
                 <br />
-                <Button type="submit" variant="contained" color="primary" >SUBMIT</Button>
+                <br />
+
+                <Button id="signUpBtn" type="submit" variant="contained" color="primary" >SignUp</Button>
             </form>
             <div>{badPass ? <h1>PASSWORD DOES NOT MATCH</h1> : ''}</div>
         </div>

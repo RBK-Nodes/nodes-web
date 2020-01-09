@@ -35,36 +35,44 @@ export function Login(props) {
             })
     }
 
-    if(isLogged) {
-       return <Redirect to='/home' />
+    if (isLogged) {
+        return <Redirect to='/home' />
     }
 
     return (
+        <div className="signup-container">
+            <img id="signinImg" src="" alt="" />
+            <h1>SIGN IN</h1>
+            <form className="signin-form"
+                onSubmit={handleSubmit}>
+                <label >  </label>
+                <Input
+                    placeholder="Enter user name"
+                    type="text"
+                    value={username}
+                    onChange={e => {
+                        setUsername(e.target.value);
+                    }}
+                    required
+                ></Input>
+                <br />
+                <br />
 
-        <form className="signin-form"
-            onSubmit={handleSubmit}>
-            <label > username </label>
-            <Input
-                placeholder="Enter user name"
-                type="text"
-                value={username}
-                onChange={e => {
-                    setUsername(e.target.value);
-                }}
-                required
-            ></Input>
-            <label > password </label>
-            <Input
-                placeholder="enter password"
-                type="password"
-                value={password}
-                onChange={e => {
-                    setPassword(e.target.value);
-                }}
-                required
-            ></Input>
-            <br />
-            <Button type="submit" variant="contained" color="primary" >SUBMIT</Button>
-        </form>
+                <label >  </label>
+                <Input
+                    placeholder="enter password"
+                    type="password"
+                    value={password}
+                    onChange={e => {
+                        setPassword(e.target.value);
+                    }}
+                    required
+                ></Input>
+                <br />
+                <br />
+
+                <Button type="submit" variant="contained" color="primary" >SUBMIT</Button>
+            </form>
+        </div>
     )
 }
