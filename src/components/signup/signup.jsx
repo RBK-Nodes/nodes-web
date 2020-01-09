@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input'
-
+import { Redirect } from 'react-router-dom';
 
 export function SignUp(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setconfirmPassword] = useState("");
-    const [correctPass, setcorrectPass] = useState();
-
+    const [isLogged, setIslogged] = useState(false)
+    const [badPass, setBadPass] = useState(false)
     var handleSubmit = e => {
         e.preventDefault();
-        passwordChecker()
-        if (!correctPass) {
+        
+        if (!passwordChecker()) {
             //change to set the class of the form to red  an
+            setBadPass(true);
             return;
         }
         let user = {
@@ -37,11 +38,17 @@ export function SignUp(props) {
                 setPassword('')
                 setUsername('')
                 setconfirmPassword('')
+                setIslogged(true)
             })
     };
+
     var passwordChecker = () => {
-        password === confirmPassword ? setcorrectPass(true) : setcorrectPass(false);
+        return password === confirmPassword;
     };
+
+    if(isLogged) {
+        return <Redirect to='/home' />
+     }
 
     return (
         <div className="signup-container">
@@ -80,7 +87,7 @@ export function SignUp(props) {
                 <br />
                 <Button type="submit" variant="contained" color="primary" >SUBMIT</Button>
             </form>
-            <div>{correctPass === false ? <h1>PASSWORD DOES NOT MATCH</h1> : ''}</div>
+            <div>{badPass ? <h1>PASSWORD DOES NOT MATCH</h1> : ''}</div>
         </div>
     )
 }
