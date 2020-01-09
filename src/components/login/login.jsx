@@ -25,13 +25,14 @@ export function Login(props) {
         }).then((response) => response.json())
             .then((data) => {
                 console.log('Success:', data);
-                localStorage.setItem("username", username)
+                localStorage.setItem("username", username);
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("refreshToken", data.refreshToken);
 
-                setPassword('')
-                setUsername('')
-                setIslogged(true)
+                setPassword('');
+                setUsername('');
+                setIslogged(true);
+                props.login(true);
             })
     }
 
