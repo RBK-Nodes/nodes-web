@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input'
+import { Redirect } from 'react-router-dom';
 
 export function Login(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [isLogged, setIslogged] = useState(false)
+
+
     var handleSubmit = e => {
         e.preventDefault();
         let user = {
@@ -29,9 +32,12 @@ export function Login(props) {
 
                 setPassword('')
                 setUsername('')
-                // Redirect("/home")
-                // <Redirect to='/home' />
+                setIslogged(true)
             })
+    }
+
+    if(isLogged) {
+       return <Redirect to='/home' />
     }
 
     return (
