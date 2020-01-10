@@ -1,9 +1,8 @@
-const axios = require('axios')({
+const axios = require('axios').create({
     headers:  {
         'authorization': `bearer ${localStorage.getItem("token")}`
     }
 });
-const path = require('path')
 const url = 'http://localhost:5001'
 
 async function searchUser(username) {
@@ -38,7 +37,7 @@ async function approveFriendRequest(friendName, yourname) {
 
 async function rejectFriendRequest(friendName, yourname) {
 
-    return axios.post('http://localhost:5001/rejectfriendrequest', {
+    return axios.post(url+'/rejectfriendrequest', {
         requester: friendName,
         target: yourname
     })
