@@ -15,7 +15,7 @@ function FriendRequestList() {
         >
             {
                 friendList.map(friend => {
-                    return <Request id={friend.id} name={friend.name} />;
+                    return <Request ket={friend.id} id={friend.id} name={friend.name} />;
                 })
             }
         </div >
