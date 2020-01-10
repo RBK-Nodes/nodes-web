@@ -28,7 +28,7 @@ function FriendRequestList(props) {
             {
 
                 friendRequests.map((friend, index) => {
-                    return <Request req={friendRequests} key={index} id={index} name={friend} />;
+                    return <Request req={friendRequests} key={index} id={index} name={friend} updater={setFriendRequests}/>;
                 })
             }
         </div >

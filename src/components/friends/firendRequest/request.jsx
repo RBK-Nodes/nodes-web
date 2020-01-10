@@ -4,26 +4,24 @@ import { approveFriendRequest, rejectFriendRequest } from '../../../chat_control
 function Request(props) {
     console.log('requsts', props.request)
     const [request, setRequest] = useState("");
-    var accecptFriendReq = (index, username) => {
-        approveFriendRequest(username, localStorage.getItem("username"));
-        //send a request to the database with userID
-        props.request.splice(index);
+    var accecptFriendReq = () => {
+        approveFriendRequest(props.name, localStorage.getItem("username")).then(()=>{
+            props.updater([]);
+        })
     }
-    var declineFriendReq = (index, username) => {
-        // rejectRequest(id)
-        rejectFriendRequest(username, localStorage.getItem("username"))
-        //RENDER THE VIEW OF FRIEND REQUEST
-        props.request.splice(index)
+    var declineFriendReq = () => {
+        rejectFriendRequest(props.name, localStorage.getItem("username"))
+        props.updater([]);
     }
     return <div className="freind">
         <p>name :{props.name}</p>
         <p>id :{props.id}</p>
 
         <Button
-            //  onClick={accecptFriendReq(props.id, props.name)}
+            onClick={accecptFriendReq}
             variant="contained" color="primary">Accecpt</Button>
         <Button
-            // onClick={declineFriendReq(props.id, props.name)} 
+            onClick={declineFriendReq} 
             variant="contained" color="secondary" style={{ marginLeft: "10px" }}>Decline</Button>
     </div>;
 }

@@ -26,7 +26,7 @@ async function sendFriendRequest(friendName, yourname) {
 }
 
 async function approveFriendRequest(friendName, yourname) {
-    return axios.post(url + '/accecptfriendrequest', {
+    return axios.post(url + '/acceptfriendrequest', {
         requester: friendName,
         target: yourname
     })
