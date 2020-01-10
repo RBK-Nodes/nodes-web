@@ -2,7 +2,7 @@ const axios = require('axios');
 
 async function searchUser(username) {
     try {
-        const response = await axios.post('http://localhost:5001/******', { username });
+        const response = await axios.post('http://localhost:5001/finduser', { username });
         console.log(response);
     } catch (error) {
         console.error(error);
@@ -10,8 +10,8 @@ async function searchUser(username) {
 }
 
 
-async function getAllFriends() {
-    return Axios.post('http://localhost:5001/******', { username })
+async function getAllFriends(username) {
+    return axios.post('http://localhost:5001/******', { username })
 
 }
 

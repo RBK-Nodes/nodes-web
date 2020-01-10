@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-
+const { approveRequest, rejectRequest } = require('../../../chat_controller/controller.js')
 function Request(props) {
     const [request, setRequest] = useState("");
     var accecptFriendReq = (id) => {
+        approveRequest(id);
         //send a request to the database with userID
     }
-    var declineFriendReq = () => {
+    var declineFriendReq = (id) => {
+        rejectRequest(id)
         //send a request to the database with userID
     }
     return <div className="freind">

@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Button } from "@material-ui/core";
 import Input from '@material-ui/core/Input';
 import SearchIcon from '@material-ui/icons/Search';
-
+const { searchUser } = require('../../../chat_controller/controller.js')
 export var SearchFriends = (props) => {
     const [username, setUsername] = useState('')
 
@@ -11,19 +11,7 @@ export var SearchFriends = (props) => {
 
         // make database request; 
         //===============================
-        fetch("http:// URL HERE", {
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json;charset=utf-8"
-            },
-            body: JSON.stringify(username)
-        }).then((response) => response.json())
-            .then((data) => {
-                console.log('Success:', data);
-                //reponse returns if user exists // 
-                setUsername('')
-            })
+        searchUser(username)
     }
 
 
