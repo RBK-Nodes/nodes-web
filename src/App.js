@@ -27,6 +27,7 @@ function App() {
               return (
                 <ul className="navbar-nav mr-auto">
                   <ul><Link to={'/'} className="nav-link"> logout </Link></ul>
+                  <ul><Link to={'/home'} className="nav-link"> {localStorage.getItem("username")} </Link></ul>
 
                   <img id="logo" src={logo}></img>
                 </ul>

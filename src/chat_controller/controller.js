@@ -1,8 +1,19 @@
 const axios = require('axios');
+const path = require('path')
+const url = 'http://localhost:5001'
 
 async function searchUser(username) {
+
+    return axios.post(url + '/finduser', { username });
+}
+
+async function getAllRequests(username) {
+    return axios.post(url + '/showfriendrequest', { username });
+}
+
+async function getAllFriends(username) {
     try {
-        const response = await axios.post('http://localhost:5001/finduser', { username });
+        const response = await axios.post(url + '/getfriends', { username });
         console.log(response);
     } catch (error) {
         console.error(error);
@@ -10,44 +21,49 @@ async function searchUser(username) {
 }
 
 
-async function getAllFriends(username) {
-    return axios.post('http://localhost:5001/******', { username })
-
+async function sendFriendRequest(friendName, yourname) {
+    return axios.post(url + '/sendfriendrequest', {
+        requester: yourname,
+        target: friendName
+    });
 }
 
-async function getAllRequests(req, res) {
-    //expect 'user' as param
-    //query for all requests where target is user
-    //send back array of requests
-
+async function approveFriendRequest(friendName, yourname) {
+    try {
+        const response = await axios.post(url + '/accecptfriendrequest',
+            {
+                requester: friendName,
+                target: yourname
+            });
+        console.log(response);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
-async function sendRequest(req, res) {
-    //expect 'requester' and 'target' as params
-    //save new request to DB
+async function rejectFriendRequest(username) {
+    try {
+        const response = await axios.post('http://localhost:5001/rejectfriendrequest', { username });
+        console.log(response);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
-async function approveRequest(req, res) {
-    //expect 'requester' and 'target' as params
-    //approve request
-}
-
-async function rejectRequest(req, res) {
-    //expect 'requester' and 'target' as params
-    //reject request
-}
-
-async function getChat(req, res) {
-    //expect 'userone' and 'usertwo' as params
-    //find chatroom
-    //find all messages with chatroom id
-    //return chatroom id and array of messages
+async function getChat(username) {
+    try {
+        const response = await axios.post('http://localhost:5001/getchat', { username });
+        console.log(response);
+    } catch (error) {
+        console.error(error);
+    }
 }
 module.exports = {
     searchUser,
+    getAllRequests,
     getAllFriends,
-    sendRequest,
-    approveRequest,
-    rejectRequest,
+    sendFriendRequest,
+    approveFriendRequest,
+    rejectFriendRequest,
     getChat
 }
