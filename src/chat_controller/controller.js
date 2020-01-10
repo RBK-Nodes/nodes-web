@@ -1,4 +1,8 @@
-const axios = require('axios');
+const axios = require('axios')({
+    headers:  {
+        'authorization': `bearer ${localStorage.getItem("token")}`
+    }
+});
 const path = require('path')
 const url = 'http://localhost:5001'
 
