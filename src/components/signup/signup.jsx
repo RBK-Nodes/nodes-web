@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input'
-
+import { Redirect } from 'react-router-dom';
 
 export function SignUp(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setconfirmPassword] = useState("");
-    const [correctPass, setcorrectPass] = useState();
-
+    const [isLogged, setIslogged] = useState(false)
+    const [badPass, setBadPass] = useState(false)
     var handleSubmit = e => {
         e.preventDefault();
-        passwordChecker()
-        if (!correctPass) {
+
+        if (!passwordChecker()) {
             //change to set the class of the form to red  an
+            setBadPass(true);
             return;
         }
         let user = {
@@ -37,17 +38,24 @@ export function SignUp(props) {
                 setPassword('')
                 setUsername('')
                 setconfirmPassword('')
+                setIslogged(true)
             })
     };
+
     var passwordChecker = () => {
-        password === confirmPassword ? setcorrectPass(true) : setcorrectPass(false);
+        return password === confirmPassword;
     };
+
+    if (isLogged) {
+        return <Redirect to='/home' />
+    }
 
     return (
         <div className="signup-container">
+            <h1>JOIN OUR COMMUNITY</h1>
             <form className="signup-form"
                 onSubmit={handleSubmit}>
-                <label > username </label>
+                <label >  </label>
                 <Input
                     placeholder="Enter user name"
                     type="text"
@@ -58,7 +66,9 @@ export function SignUp(props) {
                     required
                 ></Input>
                 <br />
-                <label > password </label>
+                <br />
+
+                <label >  </label>
                 <Input
                     placeholder="enter password"
                     type="password"
@@ -69,7 +79,9 @@ export function SignUp(props) {
                     required
                 ></Input>
                 <br />
-                <label > Confirm password </label>
+                <br />
+
+                <label >   </label>
                 <Input
                     placeholder="confirm your password"
                     type="password"
@@ -78,9 +90,11 @@ export function SignUp(props) {
                     required
                 ></Input>
                 <br />
-                <Button type="submit" variant="contained" color="primary" >SUBMIT</Button>
+                <br />
+
+                <Button id="signUpBtn" type="submit" variant="contained" color="primary" >SignUp</Button>
             </form>
-            <div>{correctPass === false ? <h1>PASSWORD DOES NOT MATCH</h1> : ''}</div>
+            <div>{badPass ? <h1>PASSWORD DOES NOT MATCH</h1> : ''}</div>
         </div>
     )
 }
