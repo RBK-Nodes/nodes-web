@@ -14,6 +14,10 @@ nav>ul{
     width: 100%s;
     background-color: #f1f1f1;
 }
+
+.chat{
+    grid-area:m ;
+}
 nav>ul a{
     display: block;
     color: #000;
@@ -58,11 +62,10 @@ html, body {
     display: ruby-base-container;
     align-content: center;
 }
-.home {
+
+.app {
     display: grid;
     height: 100%;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows:  0.1  60px;
     grid-template-areas: 
         "r m m m m m"
         "r m m m m m"
@@ -233,8 +236,8 @@ width: 50%;
 }
 
 .send-message-form {
-    background: var(--send-message-form);
-    display: flex;
+ grid-area: f;
+
 }
 
 .send-message-form input {

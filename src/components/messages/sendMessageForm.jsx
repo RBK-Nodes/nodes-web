@@ -28,8 +28,9 @@ export function SendMessageForm() {
     }
 
     return (
-        <div>
+        <div className="app">
             <form
+                className="send-message-form"
                 onSubmit={handleSubmit}
                 style={{ padding: " 0px  100px 0px 500px  ", width: "85%" }}
             >

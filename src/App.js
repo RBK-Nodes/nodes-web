@@ -5,7 +5,6 @@ import { Home } from './components/home/home.jsx'
 import logo from './logo.png'
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import SearchFriends from './components/friends/searchFriends/SearchFriends.jsx'
 
 
 function App() {
@@ -27,7 +26,7 @@ function App() {
             } else {
               return (
                 <ul className="navbar-nav mr-auto">
-                  <ul><Link to={'/search'} className="nav-link"> search </Link></ul>
+                  <ul><Link to={'/'} className="nav-link"> logout </Link></ul>
 
                   <img id="logo" src={logo}></img>
                 </ul>
@@ -40,7 +39,6 @@ function App() {
           <Route exact path='/login' render={(props) => <Login {...props} login={setLogged} />} />
           <Route path='/signup' component={SignUp} />
           <Route path='/home' component={Home} />
-          <Route path='/search' component={SearchFriends} />
         </Switch>
       </div>
     </Router>

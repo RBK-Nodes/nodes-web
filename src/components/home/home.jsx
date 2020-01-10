@@ -4,8 +4,8 @@ import Chat from '../chat/chat.jsx'
 // import Swal from 'sweetalert2'
 import Button from '@material-ui/core/Button';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import FriendsList from '../friends/friendsList/friendsList.jsx'
 import FriendRequestList from '../friends/firendRequest/requestsList.jsx'
+import SearchFriends from '../friends/searchFriends/SearchFriends.jsx'
 
 
 import Axios from 'axios';
@@ -61,13 +61,17 @@ export function Home(props) {
             <Router>
                 <Link to={'/chat'}><Button variant="contained" color="primary">Chat</Button></Link>
                 <Link to={'/requests'}><Button variant="contained" color="primary">Friends Requests</Button></Link>
-                <FriendsList />
+                <Link to={'/search'}><Button variant="contained" color="primary">Search</Button></Link>
+
 
 
 
                 <Switch >
                     <Route path='/chat' component={Chat} />
                     <Route path='/requests' component={FriendRequestList} />
+                    <Route path='/search' component={SearchFriends} />
+
+
                 </Switch>
             </Router>
         </div >

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import io from 'socket.io-client';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
+import FriendsList from '../friends/friendsList/friendsList.jsx'
 
 import MessageList from '../messages/MessagesList.jsx'
 import SendMessageForm from "../messages/sendMessageForm.jsx";
@@ -34,7 +35,8 @@ export function Chat(props) {
     }
 
     return (
-        < div className="chat">
+        < div className="app">
+            <FriendsList />
             <MessageList />
             <SendMessageForm />
 
