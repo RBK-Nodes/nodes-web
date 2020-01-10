@@ -1,14 +1,17 @@
 import React, { useState } from "react"
 import { Button } from "@material-ui/core";
 import Input from '@material-ui/core/Input';
+import SearchIcon from '@material-ui/icons/Search';
 
 export var SearchFriends = (props) => {
     const [username, setUsername] = useState('')
 
     var handleSubmit = (e) => {
         e.preventDefault();
-        // make database request;
-        fetch("https://nodes-chat-app.herokuapp.com/search", {
+
+        // make database request; 
+        //===============================
+        fetch("http:// URL HERE", {
             method: "POST",
 
             headers: {
@@ -18,7 +21,7 @@ export var SearchFriends = (props) => {
         }).then((response) => response.json())
             .then((data) => {
                 console.log('Success:', data);
-                //                                     reponse returns if user exists // 
+                //reponse returns if user exists // 
                 setUsername('')
             })
     }
@@ -27,13 +30,19 @@ export var SearchFriends = (props) => {
     return (
         <div className="search-friends">
             <form className="search-form"
-                onSubmit={handleSubmit}>
+
+                style={{ padding: "25% 25% 25% 40%" }}
+                onSubmit={e => handleSubmit(e)}>
                 <Input type="text"
                     placeholder="search for new friends"
                     onChange={e => setUsername(e.target.value)}
                     value={username}
                     required />
-                <Button type="submit">SEARCH</Button>
+                <SearchIcon />
+                <br />
+                <br />
+
+                <Button type="submit" variant="contained" color="primary">Search</Button>
             </form>
         </div>
     )

@@ -1,15 +1,15 @@
 import { Redirect } from "react-router-dom";
 import React, { useState } from 'react'
 import Chat from '../chat/chat.jsx'
-import SearchFriends from '../friends/searchFriends/SearchFriends.jsx'
 // import Swal from 'sweetalert2'
-import Button from '@material-ui/core/';
-
+import Button from '@material-ui/core/Button';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import FriendsList from '../friends/friendsList/friendsList.jsx'
+import FriendRequestList from '../friends/firendRequest/requestsList.jsx'
+
 
 import Axios from 'axios';
 // import Input from '@material-ui/core/Input'
-
 export function Home(props) {
     const [loggedIn, setLoggedIn] = useState(true)
 
@@ -58,9 +58,19 @@ export function Home(props) {
 
     return (
         <div className="home">
-            <FriendsList />
-            <Chat />
-        </div>
+            <Router>
+                <Link to={'/chat'}><Button variant="contained" color="primary">Chat</Button></Link>
+                <Link to={'/requests'}><Button variant="contained" color="primary">Friends Requests</Button></Link>
+                <FriendsList />
+
+
+
+                <Switch >
+                    <Route path='/chat' component={Chat} />
+                    <Route path='/requests' component={FriendRequestList} />
+                </Switch>
+            </Router>
+        </div >
     )
 
 }

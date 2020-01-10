@@ -3,23 +3,14 @@ import { Login } from './components/login/login.jsx'
 import { SignUp } from './components/signup/signup.jsx'
 import { Home } from './components/home/home.jsx'
 import logo from './logo.png'
-import Input from '@material-ui/core/Input'
-import SearchIcon from '@material-ui/icons/Search';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import SearchFriends from './components/friends/searchFriends/SearchFriends.jsx'
 
 
 function App() {
   const [logged, setLogged] = useState(false)
-  const [query, setQuery] = useState('')
 
-
-  var searchFriends = () => {
-    // make a search functionality to the DB
-
-    // set the input to empty
-    setQuery('')
-  }
   return (
     <Router>
       <div  >
@@ -36,13 +27,9 @@ function App() {
             } else {
               return (
                 <ul className="navbar-nav mr-auto">
-                  <Input type="text"
-                    value={query}></Input>
-                  <SearchIcon
-                    onClick={e => setQuery(e.target.value)} />
                   <ul><Link to={'/search'} className="nav-link"> search </Link></ul>
-                  <img id="logo" src={logo}></img>
 
+                  <img id="logo" src={logo}></img>
                 </ul>
               )
             }
@@ -53,6 +40,7 @@ function App() {
           <Route exact path='/login' render={(props) => <Login {...props} login={setLogged} />} />
           <Route path='/signup' component={SignUp} />
           <Route path='/home' component={Home} />
+          <Route path='/search' component={SearchFriends} />
         </Switch>
       </div>
     </Router>
