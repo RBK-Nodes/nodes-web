@@ -12,12 +12,9 @@ async function getAllRequests(username) {
 }
 
 async function getAllFriends(username) {
-    try {
-        const response = await axios.post(url + '/getfriends', { username });
-        console.log(response);
-    } catch (error) {
-        console.error(error);
-    }
+
+    return axios.post(url + '/getfriends', { username });
+
 }
 
 
@@ -29,34 +26,24 @@ async function sendFriendRequest(friendName, yourname) {
 }
 
 async function approveFriendRequest(friendName, yourname) {
-    try {
-        const response = await axios.post(url + '/accecptfriendrequest',
-            {
-                requester: friendName,
-                target: yourname
-            });
-        console.log(response);
-    } catch (error) {
-        console.error(error);
-    }
+    return axios.post(url + '/accecptfriendrequest', {
+        requester: friendName,
+        target: yourname
+    })
 }
 
-async function rejectFriendRequest(username) {
-    try {
-        const response = await axios.post('http://localhost:5001/rejectfriendrequest', { username });
-        console.log(response);
-    } catch (error) {
-        console.error(error);
-    }
+async function rejectFriendRequest(friendName, yourname) {
+
+    return axios.post('http://localhost:5001/rejectfriendrequest', {
+        requester: friendName,
+        target: yourname
+    })
+
 }
 
 async function getChat(username) {
-    try {
-        const response = await axios.post('http://localhost:5001/getchat', { username });
-        console.log(response);
-    } catch (error) {
-        console.error(error);
-    }
+
+    return axios.post('http://localhost:5001/getchat', { username });
 }
 module.exports = {
     searchUser,
