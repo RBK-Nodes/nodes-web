@@ -1,23 +1,20 @@
 import React, { useState, useEffect } from 'react'
-
+import Message from './Message.jsx'
 
 function MessageList(props) {
 
   return (
     <div className="message-list"
-      style={{ width: "186%", height: "640px" }}>
+    >
 
       {props.chat.messages.map((message, index) => {
         return (
-          <div key={index} className="message">
-            <div className="message-username">{message.senderId}</div>
-            <div className="message-text">{message.text}</div>
-          </div>
+          <Message key={index} senderId={message.senderId} text={message.text} />
         )
-      })}
+      })
+      }
     </div>
   )
-
 }
 
 export default MessageList;

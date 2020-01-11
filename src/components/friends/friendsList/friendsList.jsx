@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Button from '@material-ui/core/Button';
 import { getAllFriends } from '../../../chat_controller/controller';
 import Friend from './friend.jsx'
-function FriendsList() {
+function FriendsList(props) {
     const [friends, setFriends] = useState([])
 
     useEffect(() => {
@@ -16,15 +16,17 @@ function FriendsList() {
     return (
         <div className="friends-list"
         >
-            <form>
-                {friends.map(friend => {
+            <h3>Friends</h3>
+            <ul>
+                {friends.map((friend, index) => {
                     return <Friend
+                        Click={props.connect(friend)}
+                        key={index}
                         friend={friend} />
                 })}
-            </form>
+            </ul>
         </div>
     )
-
 }
 
 export default FriendsList

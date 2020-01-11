@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import io from 'socket.io-client';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
-
-
+import { FaTelegramPlane } from 'react-icons/fa'
 export function SendMessageForm(props) {
 
   const [message, setMessage] = useState('')
@@ -22,11 +21,15 @@ export function SendMessageForm(props) {
         type="text"
         value={message}
         onChange={e => setMessage(e.target.value)}
-        multiline></Input>
+        multiline
+        required></Input>
+      <FaTelegramPlane />
       <Button
         type="submit"
         color="secondary"
       >Send</Button>
+
+
     </form>
   )
 }

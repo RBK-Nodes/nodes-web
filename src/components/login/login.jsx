@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input'
 import { Redirect } from 'react-router-dom';
-
+import Swal from 'sweetalert2';
 export function Login(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -33,7 +33,14 @@ export function Login(props) {
                 setUsername('');
                 setIslogged(true);
                 props.login(true);
-            })
+            }).catch(
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Wrong username or password',
+                    footer: '<a href>TRY AGIAN?</a>'
+                })
+            )
     }
 
     if (isLogged) {

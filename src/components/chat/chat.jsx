@@ -3,15 +3,10 @@ import io from "socket.io-client";
 import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
 import FriendsList from "../friends/friendsList/friendsList.jsx";
-
+import { FaRegHandPointLeft } from 'react-icons/fa'
 import MessageList from "../messages/MessagesList.jsx";
 import SendMessageForm from "../messages/sendMessageForm.jsx";
-
 import { getChat } from '../../chat_controller/controller';
-
-
-
-
 
 
 export function Chat(props) {
@@ -20,6 +15,7 @@ export function Chat(props) {
   const [socket, setSocket] = useState(null)
 
   function connect(user) {
+    console.log(user)
     getChat(user, localStorage.getItem('username'))
       .then(({ data }) => {
         var newSocket = io('http://localhost:5001', {
@@ -31,8 +27,6 @@ export function Chat(props) {
         setSocket(newSocket);
         setChat(data)
       })
-
-
   }
 
   function sendMessage(msg) {
@@ -58,12 +52,19 @@ export function Chat(props) {
 
   return (
     < div className="chat">
-      <FriendsList click={connect} />
+      <FriendsList
+        connect={connect}
+      />
       {(() => {
         if (chat.id !== null) {
           return <MessageList chat={chat} />
         } else {
-          return <div>Click on a Friend</div>
+          return <div className="clickFriends" >
+            <br />
+            <br />
+            <br />
+            <FaRegHandPointLeft /> {" "}  Click on a Friend to Start a Chat
+          </div>
         }
       })()}
       <SendMessageForm click={sendMessage} />

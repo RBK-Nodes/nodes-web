@@ -29,7 +29,6 @@ export var SearchFriends = (props) => {
                             console.log('should be sending !!!')
                             sendFriendRequest(username.data, localStorage.getItem("username"))
                                 .then(ok => {
-                                    console.log(ok)
                                     Swal.fire(
                                         'Friend Request Sent! ',
                                         `It's time for ${username.data} to accecpt.`,
@@ -50,7 +49,12 @@ export var SearchFriends = (props) => {
                 }
             })
             .catch(err => {
-                console.log(err)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>TRY AGIAN?</a>'
+                })
             })
     }
     return (
@@ -65,6 +69,7 @@ export var SearchFriends = (props) => {
                     value={username}
                     required />
                 <SearchIcon />
+                <br />
                 <br />
                 <br />
 

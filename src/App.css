@@ -222,3 +222,27 @@ body {
   text-align: center;
   vertical-align: middle;
 }
+.clickFriends{
+  text-align: center;
+  vertical-align: middle;
+}
+.friends-list > ul {
+  list-style-type: none;    
+  padding: 0;
+  overflow: scoll;
+}
+.friends-list li {
+  margin: 20px 0px 0px 25px;
+}
+.friends-list > h3 {
+  margin: 5px 0;
+  color: var(--secondary-color);
+}
+.friends-list .friend a {
+  color: var(--secondary-text-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+.friends-list .friend.active a {
+  color: var(--secondary-color);
+}
