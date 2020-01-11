@@ -7,18 +7,27 @@ function MessageList(props) {
     <div className="message-list"
     >
 
-<<<<<<< HEAD
       {props.chat.messages.map((message, index) => {
-=======
-
-
->>>>>>> a8cd41baf067d283f08ca16b2dc57e683fb72923
         return (
-          <Message key={index} senderId={message.senderId} text={message.text} />
+          //       <Message key={index} senderId={message.senderId} text={message.text} />
+          <div key={index} className="message">
+            <div className="message-username">{message.senderId}</div>
+            <div className="message-text">{message.text}</div>
+          </div>
         )
       })
       }
-    </div>
+
+
+
+
+
+
+
+
+
+
+    </div >
   )
 }
 

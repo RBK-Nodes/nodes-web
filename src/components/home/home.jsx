@@ -1,20 +1,16 @@
 import { Redirect } from "react-router-dom";
 import React, { useState } from "react";
 import Chat from "../chat/chat.jsx";
-// import Swal from 'sweetalert2'
 import Button from "@material-ui/core/Button";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import FriendRequestList from "../friends/firendRequest/requestsList.jsx";
 import SearchFriends from "../friends/searchFriends/SearchFriends.jsx";
-
-<<<<<<< HEAD
-import Axios from "axios";
-=======
 import io from 'socket.io-client';
-
 import Axios from 'axios';
-// import Input from '@material-ui/core/Input'
->>>>>>> a8cd41baf067d283f08ca16b2dc57e683fb72923
+
+
+
+
 export function Home(props) {
   const [loggedIn, setLoggedIn] = useState(true);
 
@@ -48,40 +44,15 @@ export function Home(props) {
         .then((response) => {
           localStorage.setItem("token", response.token)
         })
-<<<<<<< HEAD
+
         .catch(() => {
           localStorage.removeItem("token")
           setLoggedIn(false)
         }
         )
     })
-=======
- 
-        const socket = io("http://localhost:5001");
 
-
-    return (
-        <div className="home">
-            <Router>
-                <Link to={'/chat'}><Button variant="contained" color="primary">Chat</Button></Link>
-                <Link to={'/requests'}><Button variant="contained" color="primary">Friends Requests</Button></Link>
-                <Link to={'/search'}><Button variant="contained" color="primary">Search</Button></Link>
-
-
-
-
-                <Switch >
-                    <Route path='/chat' render={(props)=><Chat {...props} socket={socket}/>} />
-                    <Route path='/requests' component={FriendRequestList} />
-                    <Route path='/search' component={SearchFriends} />
-
-
-                </Switch>
-            </Router>
-        </div >
-    )
->>>>>>> a8cd41baf067d283f08ca16b2dc57e683fb72923
-
+  const socket = io("http://localhost:5001");
   return (
     <Router>
       <div className="home">
@@ -90,7 +61,8 @@ export function Home(props) {
             <ul>
               <Link to={"/chat"} className="nav-link">
                 {" "}
-                Chat{" "}
+                Chat
+                {" "}
               </Link>
             </ul>
             <ul>
@@ -109,7 +81,7 @@ export function Home(props) {
         </nav>
 
         <Switch>
-          <Route path="/chat" component={Chat} />
+          <Route path="/chat" render={(props => { return <Chat socket={socket} /> })} />
           <Route path="/requests" component={FriendRequestList} />
           <Route path="/search" component={SearchFriends} />
         </Switch>

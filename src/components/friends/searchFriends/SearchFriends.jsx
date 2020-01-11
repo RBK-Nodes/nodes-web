@@ -61,7 +61,6 @@ export var SearchFriends = (props) => {
         <div className="search-friends">
             <form className="search-form"
 
-                // style={{ padding: "25% 25% 25% 40%" }}
                 onSubmit={e => handleSubmit(e)}>
                 <Input type="text"
                     placeholder="search for new friends"

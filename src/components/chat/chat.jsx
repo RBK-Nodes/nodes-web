@@ -5,53 +5,51 @@ import { FaRegHandPointLeft } from 'react-icons/fa'
 import MessageList from "../messages/MessagesList.jsx";
 import SendMessageForm from "../messages/sendMessageForm.jsx";
 import { getChat } from '../../chat_controller/controller';
-import GifLoader from 'react-gif-loader';
+//implent it later
+// import GifLoader from 'react-gif-loader';
+
+
+
+var url = "http://127.0.0.1:5001"
+
 
 export function Chat(props) {
   //using hooks
+  console.log('rendered chat')
   const [chat, setChat] = useState({ id: null, messages: [] })
-  const [socket, setSocket] = useState(null)
 
   function connect(user) {
-    console.log(user)
     getChat(user, localStorage.getItem('username'))
       .then(({ data }) => {
-        var newSocket = io('http://localhost:5001', {
-          query: {
-            'authorization': `bearer ${localStorage.getItem("token")}`
-          }
-        })
-        newSocket.emit('room', data.id)
-        setSocket(newSocket);
         setChat(data)
+        console.log(props)
       })
   }
 
-  function sendMessage(msg) {
-    socket.emit('message', {
-      username: localStorage.getItem('username'),
-      text: msg,
-      chatId: chat.id
-    })
+  function updateChat(msg) {
+    console.log('message')
+    var oldMessages = chat.messages;
+    oldMessages.push(msg);
+    setChat({ id: chat.id, messages: oldMessages });
   }
 
-  if (socket) {
-    console.log('listening', socket)
+  useEffect(() => {
+    console.log("room" + chat.id)
+    props.socket.on("room" + chat.id, updateChat);
+    return () => {
+      props.socket.off("room" + chat.id)
+    }
+  }, [chat.id])
 
-    socket.on('message', (data) => {
-      console.log("happened")
-      chat.messages.push(data);
-      setChat(chat);
-    })
-    socket.on('general', (data) => {
-      console.log(data)
-    })
+
+  function sendMessage(msg) {
+    props.socket.emit('message', { username: localStorage.getItem('username'), text: msg, chatId: chat.id })
   }
 
   return (
     < div className="chat">
       <FriendsList
-        connect={connect}
+        click={connect}
       />
       {(() => {
         if (chat.id !== null) {
@@ -61,11 +59,11 @@ export function Chat(props) {
             <br />
             <br />
             <br />
-            <GifLoader
+            {/* <GifLoader
               loading={chat.id === null}
               imageSrc="https://media.giphy.com/media/l378zKVk7Eh3yHoJi/source.gif"
               imageStyle={{}}
-              overlayBackground="rgba(0,0,0,0.5)" />
+              overlayBackground="rgba(0,0,0,0.5)" /> */}
             <FaRegHandPointLeft /> {" "}  Click on a Friend to Start a Chat
           </div>
         }

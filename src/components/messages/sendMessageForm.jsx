@@ -10,6 +10,7 @@ export function SendMessageForm(props) {
   var handleSubmit = (e) => {
     e.preventDefault()
     props.click(message);
+    setMessage("")
   }
 
   return (
@@ -29,16 +30,6 @@ export function SendMessageForm(props) {
         color="secondary"
       >Send</Button>
 
-<<<<<<< HEAD
-=======
-    const [message, setMessage] = useState('')
-  
-    var handleSubmit = (e) => {
-        e.preventDefault()
-        props.click(message);
-        setMessage("");
-    }
->>>>>>> a8cd41baf067d283f08ca16b2dc57e683fb72923
 
     </form>
   )
