@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Button from '@material-ui/core/Button';
 import { getAllFriends } from '../../../chat_controller/controller';
-import Friend from './friend.jsx'
 function FriendsList(props) {
     const [friends, setFriends] = useState([])
 
