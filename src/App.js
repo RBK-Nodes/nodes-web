@@ -12,7 +12,7 @@ function App() {
 
   return (
     <Router>
-      <div  >
+      <div className="app" >
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           {(() => {
             if (!logged) {

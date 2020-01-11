@@ -6,18 +6,18 @@ function FriendRequestList(props) {
     const [friendRequests, setFriendRequests] = useState([]);
     // I need to edit this later
 
-    useEffect(()=>{
+    useEffect(() => {
         getAllRequests(localStorage.getItem("username"))
-        .then(result => {
-            console.log("data here",result.data)
-            setFriendRequests(result.data)
+            .then(result => {
+                console.log("data here", result.data)
+                setFriendRequests(result.data)
 
-        })
-        .catch(err=>{
-            console.log('error', err)
-        })
+            })
+            .catch(err => {
+                console.log('error', err)
+            })
     }, friendRequests)
-    
+
 
     return (
         <div className="requests"
@@ -26,9 +26,8 @@ function FriendRequestList(props) {
             }}
         >
             {
-
                 friendRequests.map((friend, index) => {
-                    return <Request req={friendRequests} key={index} id={index} name={friend} updater={setFriendRequests}/>;
+                    return <Request req={friendRequests} key={index} id={index} name={friend} updater={setFriendRequests} />
                 })
             }
         </div >

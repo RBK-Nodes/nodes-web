@@ -7,9 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import FriendRequestList from '../friends/firendRequest/requestsList.jsx'
 import SearchFriends from '../friends/searchFriends/SearchFriends.jsx'
 
-
 import Axios from 'axios';
-// import Input from '@material-ui/core/Input'
 export function Home(props) {
     const [loggedIn, setLoggedIn] = useState(true)
 
@@ -49,24 +47,17 @@ export function Home(props) {
                 }
                 )
         })
-    // },
-    //     //change this later
-    //     50000000000000000000000000000000000000000000000000000
-    // )
 
 
 
     return (
         <div className="home">
             <Router>
-                <Link to={'/chat'}><Button variant="contained" color="primary">Chat</Button></Link>
-                <Link to={'/requests'}><Button variant="contained" color="primary">Friends Requests</Button></Link>
-                <Link to={'/search'}><Button variant="contained" color="primary">Search</Button></Link>
-
-
-
-
-                <Switch >
+                <div className="navigate">
+                    <Link to={'/chat'}><Button variant="contained" color="primary">Chat</Button></Link>
+                    <Link to={'/requests'}><Button variant="contained" color="primary">Friends Requests</Button></Link>
+                    <Link to={'/search'}><Button variant="contained" color="primary">Search</Button></Link>
+                </div> <Switch >
                     <Route path='/chat' component={Chat} />
                     <Route path='/requests' component={FriendRequestList} />
                     <Route path='/search' component={SearchFriends} />
