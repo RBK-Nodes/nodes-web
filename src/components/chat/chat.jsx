@@ -22,12 +22,12 @@ export function Chat(props) {
     function connect(user) {
         getChat(user, localStorage.getItem('username'))
         .then(({data})=>{
-            var newSocket = io('http://192.168.137.82:5001/room1', {
-            query: {
-                'authorization': `bearer ${localStorage.getItem("token")}`
-            }
+            var newSocket = io('http://localhost:5001', {
+            // query: {
+            //     'authorization': `bearer ${localStorage.getItem("token")}`
+            // }
             })
-            newSocket.emit('room', chat.id)
+            newSocket.emit('room', data.id)
             setSocket(newSocket);
             setChat(data)
         })
@@ -39,7 +39,20 @@ export function Chat(props) {
         socket.emit('message', {
             username: localStorage.getItem('username'),
             text: msg,
-            chatroomid: chat.id
+            chatId: chat.id
+        })
+    }
+
+    if(socket) {
+        console.log('listening', socket)
+
+        socket.on('message', (data)=>{
+            console.log("happened")
+            chat.messages.push(data);
+            setChat(chat);
+        })
+        socket.on('general', (data)=>{
+            console.log(data)
         })
     }
 
