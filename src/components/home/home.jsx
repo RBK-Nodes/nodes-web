@@ -44,46 +44,61 @@ export function Home(props) {
         .then(response => {
           localStorage.setItem("token", response.token);
         })
-        .catch(() => {
-          localStorage.removeItem("token");
-          setLoggedIn(false);
-        });
-    });
+        .catch((err) => {
+          var username = localStorage.getItem("username")
+          var data = {
+            "username": username,
+            "refreshToken": localStorage.getItem("refreshToken")
+          }
 
-  return (
-    <Router>
-      <div className="home">
-        <nav className="navigate">
-          <ul className="navbarhome">
-            <ul>
-              <Link to={"/chat"} className="nav-link">
-                {" "}
-                Chat{" "}
-              </Link>
-            </ul>
-            <ul>
-              <Link to={"/requests"} className="nav-link">
-                {" "}
-                Friends Requests{" "}
-              </Link>
-            </ul>
-            <ul>
-              <Link to={"/search"} className="nav-link">
-                {" "}
-                Search{" "}
-              </Link>
-            </ul>
-          </ul>
-        </nav>
+          Axios.post('https://nodes-chat-app.herokuapp.com/refresh', data)
+            .then((response) => {
+              localStorage.setItem("token", response.token)
+            })
+            .catch(() => {
+              localStorage.removeItem("token")
+              setLoggedIn(false)
+            }
+            )
+        })
 
-        <Switch>
-          <Route path="/chat" component={Chat} />
-          <Route path="/requests" component={FriendRequestList} />
-          <Route path="/search" component={SearchFriends} />
-        </Switch>
-      </div>
-    </Router>
-  );
-}
 
+
+
+
+      return (
+        <Router>
+          <div className="home">
+            <nav className="navigate">
+              <ul className="navbarhome">
+                <ul>
+                  <Link to={"/chat"} className="nav-link">
+                    {" "}
+                    Chat{" "}
+                  </Link>
+                </ul>
+                <ul>
+                  <Link to={"/requests"} className="nav-link">
+                    {" "}
+                    Friends Requests{" "}
+                  </Link>
+                </ul>
+                <ul>
+                  <Link to={"/search"} className="nav-link">
+                    {" "}
+                    Search{" "}
+                  </Link>
+                </ul>
+              </ul>
+            </nav>
+
+            <Switch>
+              <Route path="/chat" component={Chat} />
+              <Route path="/requests" component={FriendRequestList} />
+              <Route path="/search" component={SearchFriends} />
+            </Switch>
+          </div>
+        </Router>
+      );
+    }
 export default Home;

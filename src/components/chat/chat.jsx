@@ -6,8 +6,8 @@ import FriendsList from "../friends/friendsList/friendsList.jsx";
 
 import MessageList from "../messages/MessagesList.jsx";
 import SendMessageForm from "../messages/sendMessageForm.jsx";
-//set room name id here !!!
 
+<<<<<<< HEAD
 var socketed = io("http://localhost:5001/room1", {
   query: {
     authorization: `bearer ${localStorage.getItem("token")}`
@@ -41,5 +41,69 @@ export function Chat(props) {
       <SendMessageForm />
     </div>
   );
+=======
+import { getChat } from '../../chat_controller/controller';
+
+
+
+
+
+
+export function Chat(props) {
+    //using hooks
+    const [chat, setChat] = useState({id:null, messages:[]})
+    const [socket, setSocket] = useState(null)
+
+    function connect(user) {
+        getChat(user, localStorage.getItem('username'))
+        .then(({data})=>{
+            var newSocket = io('http://localhost:5001', {
+            // query: {
+            //     'authorization': `bearer ${localStorage.getItem("token")}`
+            // }
+            })
+            newSocket.emit('room', data.id)
+            setSocket(newSocket);
+            setChat(data)
+        })
+
+        
+    }
+
+    function sendMessage(msg) {
+        socket.emit('message', {
+            username: localStorage.getItem('username'),
+            text: msg,
+            chatId: chat.id
+        })
+    }
+
+    if(socket) {
+        console.log('listening', socket)
+
+        socket.on('message', (data)=>{
+            console.log("happened")
+            chat.messages.push(data);
+            setChat(chat);
+        })
+        socket.on('general', (data)=>{
+            console.log(data)
+        })
+    }
+
+    return (
+        < div className="app">
+            <FriendsList click={connect}/>
+            {(()=>{
+                if(chat.id!==null){
+                    return <MessageList chat={chat}/>
+                } else {
+                    return <div>Click on a Friend</div>
+                }
+            })()}
+            <SendMessageForm click={sendMessage}/>
+        </div >
+    )
+>>>>>>> 9556868f14924b06f239e720e0ac06a150d44f99
 }
 export default Chat;

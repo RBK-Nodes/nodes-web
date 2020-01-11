@@ -35,18 +35,12 @@ function App() {
             } else {
               return (
                 <ul className="navbar-nav mr-auto">
-                  <ul>
-                    <Link to={"/"} className="nav-link">
-                      {" "}
-                      logout{" "}
-                    </Link>
-                  </ul>
-                  <ul>
-                    <Link to={"/home"} className="nav-link">
-                      {" "}
-                      {localStorage.getItem("username")}{" "}
-                    </Link>
-                  </ul>
+                  <ul><Link to={'/'} className="nav-link" onClick={() => {
+                    localStorage.removeItem("token")
+                    localStorage.removeItem("refreshToken")
+                    localStorage.removeItem("username")
+                    setLogged(false);
+                  }}> logout </Link></ul>
                   <img id="logo" src={logo}></img>
                 </ul>
               );

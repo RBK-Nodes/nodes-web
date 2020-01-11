@@ -44,10 +44,10 @@ async function rejectFriendRequest(friendName, yourname) {
 
 }
 
-async function getChat(username) {
-
-    return axios.post('http://localhost:5001/getchat', { username });
+async function getChat(user1, user2) {
+    return axios.post( url+ '/getmessages', { user1, user2 });
 }
+
 module.exports = {
     searchUser,
     getAllRequests,
