@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react'
 import Button from '@material-ui/core/Button';
 import { getAllFriends } from '../../../chat_controller/controller';
 
-function FriendsList() {
+function FriendsList(props) {
     const [friends, setFriends] = useState([])
 
     useEffect(()=>{
@@ -17,7 +17,7 @@ function FriendsList() {
                 st>
                 <form>
                     {friends.map(friend=>{
-                        return <Button variant="contained" color="default" style={{ marginLeft: "10px" }} >{friend}</Button>
+                        return <Button onClick={()=>{props.click(friend)}} variant="contained" color="default" style={{ marginLeft: "10px" }} >{friend}</Button>
                     })}
                 </form>
             </div>

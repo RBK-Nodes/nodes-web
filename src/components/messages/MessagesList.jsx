@@ -1,28 +1,13 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
-const DUMMY_DATA = [
-    {
-        senderId: 'perborgen',
-        text: 'Hey, how is it going?'
-    },
-    {
-        senderId: 'janedoe',
-        text: 'Great! How about you?'
-    },
-    {
-        senderId: 'perborgen',
-        text: 'Good to hear! I am great as well'
-    }
-]
 
-class MessageList extends React.Component {
-    render() {
+function MessageList(props){
+
         return (
             <div className="message-list"
-                style={{ width: "186%", height: "640px" }}
+                style={{ width: "186%", height: "640px" }}>
 
-            >
-                {DUMMY_DATA.map((message, index) => {
+                {props.chat.messages.map((message, index) => {
                     return (
                         <div key={index} className="message">
                             <div className="message-username">{message.senderId}</div>
@@ -32,7 +17,7 @@ class MessageList extends React.Component {
                 })}
             </div>
         )
-    }
+    
 }
 
 export default MessageList

@@ -6,59 +6,54 @@ import FriendsList from '../friends/friendsList/friendsList.jsx'
 
 import MessageList from '../messages/MessagesList.jsx'
 import SendMessageForm from "../messages/sendMessageForm.jsx";
-//set room name id here !!!
 
-var socketed = io('http://192.168.137.82:5001/room1', {
-    query: {
-        'authorization': `bearer ${localStorage.getItem("token")}`
-    }
-})
+import { getChat } from '../../chat_controller/controller';
 
-socketed.on('connect', () => {
-    console.log('connected!');
-})
+
+
+
+
 
 export function Chat(props) {
     //using hooks
-    const [message, setMessage] = useState('')
-    const [socket, setSocket] = useState()
+    const [chat, setChat] = useState({id:null, messages:[]})
+    const [socket, setSocket] = useState(null)
 
-    useEffect(() => {
-        setSocket(socketed)
-    }, [])
+    function connect(user) {
+        getChat(user, localStorage.getItem('username'))
+        .then(({data})=>{
+            var newSocket = io('http://192.168.137.82:5001/room1', {
+            query: {
+                'authorization': `bearer ${localStorage.getItem("token")}`
+            }
+            })
+            newSocket.emit('room', chat.id)
+            setSocket(newSocket);
+            setChat(data)
+        })
 
-    var handleSubmit = (e) => {
-        e.preventDefault()
-        //submit the form 
-        socket.emit("MESSAGE", { "message": message, "senderNickname": 'adam' })
-        setMessage('');
+        
+    }
+
+    function sendMessage(msg) {
+        socket.emit('message', {
+            username: localStorage.getItem('username'),
+            text: msg,
+            chatroomid: chat.id
+        })
     }
 
     return (
         < div className="app">
-            <FriendsList />
-            <MessageList />
-            <SendMessageForm />
-
-            {/* <div
-                className="send-message-form"
-            >
-
-                <form
-                    onSubmit={handleSubmit}
-                // style={{ padding: "100px" }}
-                >
-                    <Input
-                        type="text"
-                        value={message}
-                        onChange={e => setMessage(e.target.value)}
-                        multiline></Input>
-                    <Button
-                        type="submit"
-                        color="secondary"
-                    >Send</Button>
-                </form>
-            </div> */}
+            <FriendsList click={connect}/>
+            {(()=>{
+                if(chat.id!==null){
+                    return <MessageList chat={chat}/>
+                } else {
+                    return <div>Click on a Friend</div>
+                }
+            })()}
+            <SendMessageForm click={sendMessage}/>
         </div >
     )
 }
