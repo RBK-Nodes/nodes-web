@@ -14,22 +14,20 @@ export function SendMessageForm(props) {
   }
 
   return (
-    <div className="app">
-      <form
-        className="send-message-form"
-        onSubmit={handleSubmit}
-      >
-        <Input
-          type="text"
-          value={message}
-          onChange={e => setMessage(e.target.value)}
-          multiline></Input>
-        <Button
-          type="submit"
-          color="secondary"
-        >Send</Button>
-      </form>
-    </div >
+    <form
+      className="send-message-form"
+      onSubmit={handleSubmit}
+    >
+      <Input
+        type="text"
+        value={message}
+        onChange={e => setMessage(e.target.value)}
+        multiline></Input>
+      <Button
+        type="submit"
+        color="secondary"
+      >Send</Button>
+    </form>
   )
 }
 export default SendMessageForm;

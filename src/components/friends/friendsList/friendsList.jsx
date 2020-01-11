@@ -19,7 +19,6 @@ function FriendsList() {
             <form>
                 {friends.map(friend => {
                     return <Friend
-                        //style={{ marginLeft: "10px" }}
                         friend={friend} />
                 })}
             </form>

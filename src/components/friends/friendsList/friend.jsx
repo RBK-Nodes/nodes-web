@@ -7,7 +7,6 @@ function Friend(props) {
         >
             <form>
                 <Button variant="contained" color="default"
-                //style={{ marginLeft: "10px" }} 
                 >{props.friend}</Button>
             </form>
         </div>
