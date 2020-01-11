@@ -3,7 +3,7 @@ const axios = require('axios').create({
         'authorization': `bearer ${localStorage.getItem("token")}`
     }
 });
-const url = 'http://localhost:5001'
+const url = 'http://127.0.0.1:5001'
 
 async function searchUser(username) {
 
