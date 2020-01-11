@@ -1,9 +1,7 @@
 .signup-container {
   height: 100px;
 }
-.navbar_navbar-expand-lg_navbar-light_bg-light {
-  /* grid-area: a; */
-}
+
 nav > ul {
   display: flex;
   list-style-type: none;
@@ -33,6 +31,9 @@ nav > ul a:hover {
 h4 {
   padding-left: 890px;
 }
+.navbar_navbar {
+  grid-area: a;
+}
 :root {
   --main-color: #5ea3d0;
   --secondary-color: white;
@@ -53,17 +54,14 @@ body {
 
 #root {
   height: 100%;
-  widows: 100%;
+  width: 100%;
 }
-.search-friends {
-  display: ruby-base-container;
-  align-content: center;
-}
+
 .app {
   display: grid;
   height: 100%;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 60px;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 60px;
+  grid-template-rows: 0.3fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 60px;
   grid-template-areas:
     "a a a a a a"
     "h h h h h h"
@@ -71,203 +69,70 @@ body {
     "h h h h h h"
     "h h h h h h";
 }
-
-.home {
-  grid-area: h;
-}
 .home {
   display: grid;
   height: 100%;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 60px;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 60px;
+  grid-template-rows: 0.3fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 60px;
   grid-template-areas:
     "n n n n n n"
-    "r m m m m m"
-    "r m m m m m"
-    "r m m m m m"
-    "r f f f f f";
+    "m m m m m m"
+    "m m m m m m"
+    "m m m m m m";
+}
+.home {
+  grid-area: h;
 }
 
-.signup-form {
-  display: inline-table;
-  padding-left: 100px;
+.chat {
+  grid-area: m;
 }
-.navigate {
-  grid-area: n;
+.chat {
+  display: grid;
+  height: 100%;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 60px;
+  grid-template-areas:
+    "r r s s s s"
+    "r r s s s s"
+    "r r s s s s"
+    "r r s s s s"
+    "r r f f f f";
 }
 .signup-container {
   grid-area: h;
-
-  width: 33%;
   padding: 8% 25% 25% 40%;
   border-style: solid;
   border-width: 2px 10px 4px 20px;
 }
-#signupImg {
-  height: 130%;
-  width: 50%;
-}
-
-.signup-form {
-  grid-area: h;
-}
 .signIn-container {
   grid-area: h;
-
   width: 33%;
   padding: 10% 25% 25% 40%;
   border-style: solid;
   border-width: 2px 10px 4px 20px;
 }
-
-#signinImg {
-  height: 190%;
-  width: 50%;
+.naviagte > ul {
+  grid-area: n;
 }
-
 .friends-list {
   grid-area: r;
-}
-
-.message-list {
-  grid-area: m;
-}
-
-.send-message-form {
-  grid-area: f;
-}
-
-/* REST OF CSS */
-.friends-list {
-  box-sizing: border-box;
-  padding: 10px;
-  background-color: var(--main-color);
-  overflow: scroll;
   height: 100%;
+  border: solid;
 }
-
-.friends-list > ul {
+.navbarhome > ul {
+  display: flex;
   list-style-type: none;
+  float: right;
+  margin: 0;
   padding: 0;
-  overflow: scroll;
+  grid-area: n;
 }
-
-.friends-list li {
-  margin: 10px 0;
-}
-
-.friends-list > h3 {
-  margin: 5px 0;
-  color: var(--secondary-color);
-}
-
-.friends-list .room a {
-  color: var(--secondary-text-color);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.friends-list .room.active a {
-  color: var(--secondary-color);
-}
-
-.new-room-form {
-  padding: 0 5px;
-  background: var(--secondary-color);
-  color: var(--main-text-color);
-}
-
-.new-room-form form {
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.new-room-form input {
-  width: 135px;
-  background: var(--secondary-color);
-}
-
-.new-room-form button {
-  background: var(--secondary-color);
-  color: var(--main-text-color);
-  border: 0;
-}
-
-.new-room-form input::placeholder {
-  color: var(--main-text-color);
-  font-weight: 200;
-}
-
-.new-room-form input:focus {
-  outline-width: 0;
-}
-
-.new-room-form input {
-  border: 0;
-}
-
-.new-room-form button {
-  border: 0;
-}
-
-.message {
-  margin: 15px 0;
-}
-
-.message .message-username {
-  font-size: 11px;
-  color: var(--main-text-color);
-  opacity: 0.9;
-  margin-bottom: 6px;
-}
-.message .message-text {
-  background: var(--main-color);
-  color: var(--secondary-color);
-  display: inline;
-  padding: 4px 8px;
-  border-radius: 8px;
-}
-
+/* .friends-list {
+} */
 .message-list {
-  box-sizing: border-box;
-  padding-left: 6px;
-  width: 100%;
-  height: 100%;
-  overflow: scroll;
-  background: var(--secondary-color);
+  grid-area: s;
 }
-
-.message-list .join-room {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80%;
-  font-size: 34px;
-  font-weight: 300;
-}
-
 .send-message-form {
   grid-area: f;
-}
-
-.send-message-form input {
-  margin: 0;
-  border-style: none;
-  background: var(--send-message-form);
-  font-weight: 200;
-}
-
-.send-message-form input:focus {
-  outline-width: 0;
-}
-
-.send-message-form input::placeholder {
-  color: var(--main-text-color);
-}
-
-.help-text {
-  position: absolute;
-  top: 10px;
 }

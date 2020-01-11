@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar_navbar">
           {(() => {
             if (!logged) {
               return (
@@ -46,8 +46,8 @@ function App() {
                       {" "}
                       {localStorage.getItem("username")}{" "}
                     </Link>
-                    <img id="logo" src={logo}></img>
                   </ul>
+                  <img id="logo" src={logo}></img>
                 </ul>
               );
             }
