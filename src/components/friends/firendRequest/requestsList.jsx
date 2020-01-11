@@ -16,17 +16,9 @@ function FriendRequestList(props) {
         console.log("error", err);
       });
   }, friendRequests);
-
-  // useEffect(() => {
-  //     console.log(request)
-  // })
-
   return (
     <div
-      className="requests"
-      style={{
-        height: "200px"
-      }}
+      className="friend-requests"
     >
       {friendRequests.map((friend, index) => {
         return (
@@ -39,6 +31,7 @@ function FriendRequestList(props) {
           />
         );
       })}
+      <div>{!friendRequests.length ? <h1>YOU HAVE NO FRIEND REQUESTS</h1> : ''}</div>
     </div>
   );
 }

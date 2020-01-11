@@ -53,13 +53,11 @@ export var SearchFriends = (props) => {
                 console.log(err)
             })
     }
-
-
     return (
         <div className="search-friends">
             <form className="search-form"
 
-                style={{ padding: "25% 25% 25% 40%" }}
+                // style={{ padding: "25% 25% 25% 40%" }}
                 onSubmit={e => handleSubmit(e)}>
                 <Input type="text"
                     placeholder="search for new friends"

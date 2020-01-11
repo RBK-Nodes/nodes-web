@@ -117,8 +117,7 @@ body {
 }
 .friends-list {
   grid-area: r;
-  height: 100%;
-  border: solid;
+
 }
 .navbarhome > ul {
   display: flex;
@@ -128,11 +127,97 @@ body {
   padding: 0;
   grid-area: n;
 }
-/* .friends-list {
-} */
+.friends-list {
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: var(--main-color);
+    overflow: scroll;
+    height: 100%;
+}
 .message-list {
   grid-area: s;
+  
 }
 .send-message-form {
   grid-area: f;
 }
+
+.message {
+    margin: 15px 0;
+}
+
+.message .message-username {
+    font-size: 11px;
+    color: var(--main-text-color);
+    opacity: 0.9;
+    margin-bottom: 6px;
+}
+.message .message-text {
+    background: var(--main-color);
+    color: var(--secondary-color);
+    display: inline;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+.message-list {
+    box-sizing: border-box;
+    padding-left: 6px;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    background: var(--secondary-color);
+}
+
+.message-list .join-room {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 34px;
+    font-weight: 300;
+}
+
+.send-message-form {
+    background: var(--send-message-form);
+    display: flex;
+}
+
+.send-message-form input {
+    width: 100%;
+    padding: 15px 10px;
+    margin: 0;
+    border-style: none;
+    background: var(--send-message-form);
+    font-weight: 200;
+
+}
+
+.send-message-form input:focus {
+    outline-width: 0;
+}
+
+.send-message-form input::placeholder {
+    color: var(--main-text-color);
+}
+
+.help-text {
+    position: absolute;
+    top: 10px;
+}
+.search-friends{
+    grid-area: m;
+}
+.search-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.friend-requests{
+    grid-area: m;
+    border: solid 2px;
+    border-radius: 30px;
+    text-align: center;
+    vertical-align: middle;
+}
+
