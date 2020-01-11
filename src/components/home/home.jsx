@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import FriendRequestList from '../friends/firendRequest/requestsList.jsx'
 import SearchFriends from '../friends/searchFriends/SearchFriends.jsx'
 
+import io from 'socket.io-client';
 
 import Axios from 'axios';
 // import Input from '@material-ui/core/Input'
@@ -50,7 +51,7 @@ export function Home(props) {
                 )
         })
  
-
+        const socket = io("http://localhost:5001");
 
 
     return (
@@ -64,7 +65,7 @@ export function Home(props) {
 
 
                 <Switch >
-                    <Route path='/chat' component={Chat} />
+                    <Route path='/chat' render={(props)=><Chat {...props} socket={socket}/>} />
                     <Route path='/requests' component={FriendRequestList} />
                     <Route path='/search' component={SearchFriends} />
 

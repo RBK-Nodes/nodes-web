@@ -11,6 +11,7 @@ export function SendMessageForm(props) {
     var handleSubmit = (e) => {
         e.preventDefault()
         props.click(message);
+        setMessage("");
     }
 
     return (
