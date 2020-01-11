@@ -33,14 +33,16 @@ export function Login(props) {
                 setUsername('');
                 setIslogged(true);
                 props.login(true);
-            }).catch(
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Wrong username or password',
-                    footer: '<a href>TRY AGIAN?</a>'
-                })
-            )
+            }).catch(err => {
+                if (err) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Wrong username or password',
+                        footer: '<a href>TRY AGIAN?</a>'
+                    })
+                }
+            })
     }
 
     if (isLogged) {

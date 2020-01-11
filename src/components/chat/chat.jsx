@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
-import Button from "@material-ui/core/Button";
-import Input from "@material-ui/core/Input";
 import FriendsList from "../friends/friendsList/friendsList.jsx";
 import { FaRegHandPointLeft } from 'react-icons/fa'
 import MessageList from "../messages/MessagesList.jsx";
 import SendMessageForm from "../messages/sendMessageForm.jsx";
 import { getChat } from '../../chat_controller/controller';
-
+import GifLoader from 'react-gif-loader';
 
 export function Chat(props) {
   //using hooks
@@ -19,9 +17,9 @@ export function Chat(props) {
     getChat(user, localStorage.getItem('username'))
       .then(({ data }) => {
         var newSocket = io('http://localhost:5001', {
-          // query: {
-          //     'authorization': `bearer ${localStorage.getItem("token")}`
-          // }
+          query: {
+            'authorization': `bearer ${localStorage.getItem("token")}`
+          }
         })
         newSocket.emit('room', data.id)
         setSocket(newSocket);
@@ -63,6 +61,11 @@ export function Chat(props) {
             <br />
             <br />
             <br />
+            <GifLoader
+              loading={chat.id === null}
+              imageSrc="https://media.giphy.com/media/l378zKVk7Eh3yHoJi/source.gif"
+              imageStyle={{}}
+              overlayBackground="rgba(0,0,0,0.5)" />
             <FaRegHandPointLeft /> {" "}  Click on a Friend to Start a Chat
           </div>
         }
