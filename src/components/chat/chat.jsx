@@ -9,7 +9,7 @@ import { getChat } from '../../chat_controller/controller';
 
 
 
-var url = "http://192.168.137.100:5001"
+var url = "http://127.0.0.1:5001"
 
 
 export function Chat(props) {
