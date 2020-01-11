@@ -1,41 +1,35 @@
-body {
-  /* background-image: url('./cover.jpg'); */
-  background-size: auto;
-}
 .signup-container {
   height: 100px;
 }
-nav>ul{
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 100%s;
-    background-color: #f1f1f1;
+nav > ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #f1f1f1;
 }
-
-.chat{
-    grid-area:m ;
+​ .chat {
+  grid-area: m;
 }
-nav>ul a{
-    display: block;
-    color: #000;
-    padding: 20px 16px;
-    text-decoration: none;
+nav > ul a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
 }
-#logo{
-    padding-left: 1000px;
-    float:right;
-    height: 10%;
-    width: 10%;
+#logo {
+  padding-left: 1000px;
+  float: right;
+  height: 10%;
+  width: 10%;
 }
-
-nav>ul a:hover {
-    background-color: #555;
-    color: white;
-  }
-h4{
-    padding-left:890px;
+​ nav > ul a:hover {
+  background-color: #555;
+  color: white;
+}
+h4 {
+  padding-left: 890px;
 }
 :root {
   --main-color: #5ea3d0;
@@ -44,8 +38,7 @@ h4{
   --secondary-text-color: #b0c7d6;
   --send-message-form: #f5f5f5;
 }
-
-html,
+​ html,
 body {
   height: 100%;
   margin: 0;
@@ -54,155 +47,148 @@ body {
   font-weight: 200;
   color: #3e5869;
 }
-
-#root {
+​ #root {
   height: 100%;
+  widows: 100%;
 }
 .search-friends {
   display: ruby-base-container;
   align-content: center;
 }
-
 .app {
-    display: grid;
-    height: 100%;
-    grid-template-areas: 
-        "r m m m m m"
-        "r m m m m m"
-        "r m m m m m"
-        "r m m m m m"
-        "r m m m m m"
-        "n f f f f f";
+  display: grid;
+  height: 100%;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 60px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 60px;
+  grid-template-areas:
+    "a a a a a a"
+    "h h h h h h"
+    "h h h h h h"
+    "h h h h h h"
+    "h h h h h h";
 }
-.signup-form{
-    display: inline-table;
-    padding-left: 100px;
-    
+​ .home {
+  grid-area: h;
 }
-.signup-container{
-    width: 33%;
-    padding: 8% 25% 25% 40%;
-    border-style: solid;
-    border-width: 2px 10px 4px 20px
+.home {
+  display: grid;
+  height: 100%;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 60px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 60px;
+  grid-template-areas:
+    "r n n n n n"
+    "r m m m m m"
+    "r m m m m m"
+    "r m m m m m"
+    "r f f f f f";
 }
-#signupImg{
-height: 130%;
-width: 50%;
+​ .signup-form {
+  display: inline-table;
+  padding-left: 100px;
 }
-
-.signup-form{
-    display: inline-table;
-    padding-left: 100px;
-    
+.navigate {
+  grid-area: n;
 }
-.signIn-container{
-    width: 33%;
-    padding: 10% 25% 25% 40%;
-    border-style: solid;
-    border-width: 2px 10px 4px 20px
+.signup-container {
+  grid-area: h;
+  width: 33%;
+  padding: 8% 25% 25% 40%;
+  border-style: solid;
+  border-width: 2px 10px 4px 20px;
 }
-
-#signinImg{
-    height: 190%;
-    width: 50%;
+#signupImg {
+  height: 130%;
+  width: 50%;
 }
-
-.friends-list {
-    grid-area: r;
-    
+​ .signup-form {
+  grid-area: h;
 }
-
-.message-list{
-    grid-area: m;
-    height: 10000000px;
-    width: 150%;
-} 
-/* 
-.send-message-form {
-
-}  */
-
+.signIn-container {
+  grid-area: h;
+  width: 33%;
+  padding: 10% 25% 25% 40%;
+  border-style: solid;
+  border-width: 2px 10px 4px 20px;
+}
+​ #signinImg {
+  height: 190%;
+  width: 50%;
+}
+​ .friends-list {
+  grid-area: r;
+}
+​ .message-list {
+  grid-area: m;
+}
+​ .send-message-form {
+  grid-area: f;
+}
+​
 /* REST OF CSS */
 .friends-list {
-    box-sizing: border-box;
-    padding: 10px;
-    background-color: var(--main-color);
-    overflow: scroll;
-    height: 100%;
-    width: 300px;
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: var(--main-color);
+  overflow: scroll;
+  height: 100%;
 }
-
-.rooms-list > ul {
+​ .friends-list > ul {
   list-style-type: none;
   padding: 0;
   overflow: scoll;
 }
-
-.rooms-list li {
+​ .friends-list li {
   margin: 10px 0;
 }
-
-.rooms-list > h3 {
+​ .friends-list > h3 {
   margin: 5px 0;
   color: var(--secondary-color);
 }
-
-.rooms-list .room a {
+​ .friends-list .room a {
   color: var(--secondary-text-color);
   font-weight: 600;
   text-decoration: none;
 }
-
-.rooms-list .room.active a {
+​ .friends-list .room.active a {
   color: var(--secondary-color);
 }
-
-.new-room-form {
+​ .new-room-form {
   padding: 0 5px;
   background: var(--secondary-color);
   color: var(--main-text-color);
 }
-
-.new-room-form form {
+​ .new-room-form form {
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
-.new-room-form input {
+​ .new-room-form input {
   width: 135px;
   background: var(--secondary-color);
 }
-
-.new-room-form button {
+​ .new-room-form button {
   background: var(--secondary-color);
   color: var(--main-text-color);
   border: 0;
 }
-
-.new-room-form input::placeholder {
+​ .new-room-form input::placeholder {
   color: var(--main-text-color);
   font-weight: 200;
 }
-
-.new-room-form input:focus {
+​ .new-room-form input:focus {
   outline-width: 0;
 }
-
-.new-room-form input {
+​ .new-room-form input {
   border: 0;
 }
-
-.new-room-form button {
+​ .new-room-form button {
   border: 0;
 }
-
-.message {
+​ .message {
   margin: 15px 0;
 }
-
-.message .message-username {
+​ .message .message-username {
   font-size: 11px;
   color: var(--main-text-color);
   opacity: 0.9;
@@ -215,8 +201,7 @@ width: 50%;
   padding: 4px 8px;
   border-radius: 8px;
 }
-
-.message-list {
+​ .message-list {
   box-sizing: border-box;
   padding-left: 6px;
   width: 100%;
@@ -224,39 +209,30 @@ width: 50%;
   overflow: scroll;
   background: var(--secondary-color);
 }
-
-.message-list .join-room {
+​ .message-list .join-room {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 80%;
   font-size: 34px;
   font-weight: 300;
 }
-
-.send-message-form {
- grid-area: f;
-
+​ .send-message-form {
+  grid-area: f;
 }
-
-.send-message-form input {
-  width: 100%;
-  padding: 15px 10px;
+​ .send-message-form input {
   margin: 0;
   border-style: none;
   background: var(--send-message-form);
   font-weight: 200;
 }
-
-.send-message-form input:focus {
+​ .send-message-form input:focus {
   outline-width: 0;
 }
-
-.send-message-form input::placeholder {
+​ .send-message-form input::placeholder {
   color: var(--main-text-color);
 }
-
-.help-text {
+​ .help-text {
   position: absolute;
   top: 10px;
 }

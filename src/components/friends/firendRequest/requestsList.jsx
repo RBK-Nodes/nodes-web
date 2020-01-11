@@ -25,7 +25,7 @@ function FriendRequestList() {
       }}
     >
       {request.map((friend, index) => {
-        return <Request key={index + 1} id={index} name={friend} />;
+        return <Request key={index} id={index} name={friend} />;
       })}
     </div>
   );
