@@ -8,7 +8,7 @@ import MessageList from '../messages/MessagesList.jsx'
 import SendMessageForm from "../messages/sendMessageForm.jsx";
 //set room name id here !!!
 
-var socketed = io('http://192.168.137.82:5001/room1', {
+var socketed = io('http://localhost:5001/room1', {
     query: {
         'authorization': `bearer ${localStorage.getItem("token")}`
     }
@@ -35,7 +35,7 @@ export function Chat(props) {
     }
 
     return (
-        < div className="app">
+        < div >
             <FriendsList />
             <MessageList />
             <SendMessageForm />
