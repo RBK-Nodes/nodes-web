@@ -21,7 +21,8 @@ function App() {
                   <ul>
                     <Link to={"/login"} className="nav-link">
                       {" "}
-                      Login{" "}
+                      Login
+                      {" "}
                     </Link>
                   </ul>
                   <ul>
@@ -42,6 +43,7 @@ function App() {
                     localStorage.removeItem("username")
                     setLogged(false);
                   }}> logout </Link></ul>
+                  <ul> <Link>{localStorage.getItem("username")}</Link></ul>
                   <img id="logo" src={logo}></img>
                 </ul>
               );
@@ -59,8 +61,9 @@ function App() {
             path="/login"
             render={props => <Login {...props} login={setLogged} />}
           />
-          <Route path="/signup" component={SignUp} />
-          <Route path="/home" component={Home} />
+          <Route path="/signup" render={props => <SignUp {...props} login={setLogged} />} />
+          <Route path="/home" component={Home}
+          />
         </Switch>
       </div>
     </Router>

@@ -1,9 +1,10 @@
 
 const Axios = require('axios')
-// .create({
-//     headers: {
-//         'authorization': `bearer ${localStorage.getItem("token")}`
-//     }
+    .create({
+        headers: {
+            'authorization': `bearer ${localStorage.getItem("token")}`
+        }
+    })
 
 const url = process.env.AUTH || 'https://nodes-chat-auth.herokuapp.com'
 
@@ -26,7 +27,6 @@ export function userAuthenticator(user, method) {
     })
         .then((response) => response.json())
         .then(data => {
-            console.log('happedened', data)
             localStorage.setItem("username", user.username);
             localStorage.setItem("token", data.token);
             localStorage.setItem("refreshToken", data.refreshToken);

@@ -25,12 +25,6 @@ export function Home(props) {
   }
 
   userValidator()
-    .then(response => {
-      console.log('responsoe', response)
-      if (response.data === "valid") {
-        console.log("ITS ALL GOOD BABY")
-      }
-    })
     .catch(() => {
       refreshTokenUpdater()
         .catch(() => {

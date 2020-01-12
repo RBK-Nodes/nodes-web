@@ -28,6 +28,7 @@ export function SignUp(props) {
                 setUsername('')
                 setconfirmPassword('')
                 setIslogged(true)
+                props.login(true)
             })
             .catch(err => {
                 if (err) {
