@@ -9,6 +9,7 @@ import io from 'socket.io-client';
 import Axios from 'axios';
 require('dotenv').config()
 
+const url = process.env.API_URL || 'https://nodes-chat-api.herokuapp.com/'
 
 
 
@@ -58,7 +59,7 @@ export function Home(props) {
         })
     })
 
-  const socket = io("http://localhost:5001");
+  const socket = io(url);
   return (
     <Router>
       <div className="home">

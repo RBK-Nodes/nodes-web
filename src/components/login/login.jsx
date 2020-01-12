@@ -16,16 +16,14 @@ export function Login(props) {
             username,
             password
         };
-        //
-        // fetch("https://nodes-chat-auth.herokuapp.com/signin", {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json;charset=utf-8"
-        //     },
-        //     body: JSON.stringify(user)
-        // })
-        signIn(user)
-            .then((response) => response.json())
+
+        fetch("https://nodes-chat-auth.herokuapp.com/signin", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json;charset=utf-8"
+            },
+            body: JSON.stringify(user)
+        }).then((response) => response.json())
             .then((data) => {
                 localStorage.setItem("username", username);
                 localStorage.setItem("token", data.token);
