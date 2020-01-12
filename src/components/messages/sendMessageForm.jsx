@@ -11,7 +11,6 @@ export function SendMessageForm(props) {
     props.click(message);
     setMessage("")
   }
-
   return (
     <form
       className="send-message-form"
@@ -21,15 +20,12 @@ export function SendMessageForm(props) {
         type="text"
         value={message}
         onChange={e => setMessage(e.target.value)}
-        multiline
         required></Input>
       <FaTelegramPlane />
       <Button
         type="submit"
         color="secondary"
       >Send</Button>
-
-
     </form>
   )
 }

@@ -17,6 +17,7 @@ export function Login(props) {
         }
         signIn(user)
             .then(() => {
+                console.log('user logged in')
                 setIslogged(true)
             })
             .catch((err) => {
