@@ -5,7 +5,7 @@ import { FaRegHandPointLeft } from 'react-icons/fa'
 import MessageList from "../messages/MessagesList.jsx";
 import SendMessageForm from "../messages/sendMessageForm.jsx";
 import { getChat } from '../../chat_controller/controller';
-//implent it later
+import Secret from './extraBonus.jsx'
 // import GifLoader from 'react-gif-loader';
 
 
@@ -47,6 +47,7 @@ export function Chat(props) {
 
   return (
     < div className="chat">
+      <Secret />
       <FriendsList
         click={connect}
       />
