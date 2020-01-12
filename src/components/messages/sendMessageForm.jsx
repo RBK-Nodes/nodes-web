@@ -1,49 +1,36 @@
 import React, { useState, useEffect } from 'react'
-import io from 'socket.io-client';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
-var socketed = io('http://localhost:5001', {
-    query: {
-        'authorization': `bearer ${localStorage.getItem("token")}`
-    }
-})
-socketed.on('connect', () => {
-    console.log('connected!');
-})
+import { FaTelegramPlane } from 'react-icons/fa'
+export function SendMessageForm(props) {
 
-export function SendMessageForm() {
+  const [message, setMessage] = useState('')
 
-    const [message, setMessage] = useState('')
-    const [socket, setSocket] = useState()
+  var handleSubmit = (e) => {
+    e.preventDefault()
+    props.click(message);
+    setMessage("")
+  }
 
-    useEffect(() => {
-        setSocket(socketed)
-    }, [])
+  return (
+    <form
+      className="send-message-form"
+      onSubmit={handleSubmit}
+    >
+      <Input
+        type="text"
+        value={message}
+        onChange={e => setMessage(e.target.value)}
+        multiline
+        required></Input>
+      <FaTelegramPlane />
+      <Button
+        type="submit"
+        color="secondary"
+      >Send</Button>
 
-    var handleSubmit = (e) => {
-        e.preventDefault()
-        //submit the form 
-        socket.emit("MESSAGE", { "message": message, "senderNickname": 'adam' })
-        setMessage('');
-    }
 
-    return (
-        <div>
-            <form
-                onSubmit={handleSubmit}
-                style={{ padding: " 0px  100px 0px 500px  ", width: "85%" }}
-            >
-                <Input
-                    type="text"
-                    value={message}
-                    onChange={e => setMessage(e.target.value)}
-                    multiline></Input>
-                <Button
-                    type="submit"
-                    color="secondary"
-                >Send</Button>
-            </form>
-        </div >
-    )
+    </form>
+  )
 }
-export default SendMessageForm
+export default SendMessageForm;

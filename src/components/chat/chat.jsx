@@ -1,63 +1,74 @@
 import React, { useState, useEffect } from "react";
-import io from 'socket.io-client';
-import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
-
-import MessageList from '../messages/MessagesList.jsx'
+import io from "socket.io-client";
+import FriendsList from "../friends/friendsList/friendsList.jsx";
+import { FaRegHandPointLeft } from 'react-icons/fa'
+import MessageList from "../messages/MessagesList.jsx";
 import SendMessageForm from "../messages/sendMessageForm.jsx";
-//set room name id here !!!
+import { getChat } from '../../chat_controller/controller';
+//implent it later
+// import GifLoader from 'react-gif-loader';
 
-var socketed = io('http://192.168.137.82:5001/room1', {
-    query: {
-        'authorization': `bearer ${localStorage.getItem("token")}`
-    }
-})
 
-socketed.on('connect', () => {
-    console.log('connected!');
-})
+
+
 
 export function Chat(props) {
-    //using hooks
-    const [message, setMessage] = useState('')
-    const [socket, setSocket] = useState()
+  //using hooks
+  console.log('rendered chat')
+  const [chat, setChat] = useState({ id: null, messages: [] })
 
-    useEffect(() => {
-        setSocket(socketed)
-    }, [])
+  function connect(user) {
+    getChat(user, localStorage.getItem('username'))
+      .then(({ data }) => {
+        setChat(data)
+        console.log(props)
+      })
+  }
 
-    var handleSubmit = (e) => {
-        e.preventDefault()
-        //submit the form 
-        socket.emit("MESSAGE", { "message": message, "senderNickname": 'adam' })
-        setMessage('');
+  function updateChat(msg) {
+    console.log('message')
+    var oldMessages = chat.messages;
+    oldMessages.push(msg);
+    setChat({ id: chat.id, messages: oldMessages });
+  }
+
+  useEffect(() => {
+    console.log("room" + chat.id)
+    props.socket.on("room" + chat.id, updateChat);
+    return () => {
+      props.socket.off("room" + chat.id)
     }
+  }, [chat.id])
 
-    return (
-        < div className="chat">
-            <MessageList />
-            <SendMessageForm />
 
-            {/* <div
-                className="send-message-form"
-            >
+  function sendMessage(msg) {
+    props.socket.emit('message', { username: localStorage.getItem('username'), text: msg, chatId: chat.id })
+  }
 
-                <form
-                    onSubmit={handleSubmit}
-                // style={{ padding: "100px" }}
-                >
-                    <Input
-                        type="text"
-                        value={message}
-                        onChange={e => setMessage(e.target.value)}
-                        multiline></Input>
-                    <Button
-                        type="submit"
-                        color="secondary"
-                    >Send</Button>
-                </form>
-            </div> */}
-        </div >
-    )
+  return (
+    < div className="chat">
+      <FriendsList
+        click={connect}
+      />
+      {(() => {
+        if (chat.id !== null) {
+          return <MessageList chat={chat} />
+        } else {
+          return <div className="clickFriends" >
+            <br />
+            <br />
+            <br />
+            {/* <GifLoader
+              loading={chat.id === null}
+              imageSrc="https://media.giphy.com/media/l378zKVk7Eh3yHoJi/source.gif"
+              imageStyle={{}}
+              overlayBackground="rgba(0,0,0,0.5)" /> */}
+            <FaRegHandPointLeft /> {" "}  Click on a Friend to Start a Chat
+          </div>
+        }
+      })()}
+      <SendMessageForm click={sendMessage} />
+    </div >
+  )
 }
-export default Chat
+export default Chat;

@@ -1,38 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import Message from './Message.jsx'
+import ReactEmoji from 'react-emoji'
+function MessageList(props) {
 
-const DUMMY_DATA = [
-    {
-        senderId: 'perborgen',
-        text: 'Hey, how is it going?'
-    },
-    {
-        senderId: 'janedoe',
-        text: 'Great! How about you?'
-    },
-    {
-        senderId: 'perborgen',
-        text: 'Good to hear! I am great as well'
-    }
-]
+  return (
+    <div className="message-list"
+    >
 
-class MessageList extends React.Component {
-    render() {
+      {props.chat.messages.map((message, index) => {
         return (
-            <div className="message-list"
-                style={{ width: "186%", height: "640px" }}
+          //       <Message key={index} senderId={message.senderId} text={message.text} />
 
-            >
-                {DUMMY_DATA.map((message, index) => {
-                    return (
-                        <div key={index} className="message">
-                            <div className="message-username">{message.senderId}</div>
-                            <div className="message-text">{message.text}</div>
-                        </div>
-                    )
-                })}
-            </div>
+          <div key={index} className="message">
+            <div className="message-username">{console.log(message)}{message.username}</div>
+            <div className="message-text">{ReactEmoji.emojify(message.text)}</div>
+          </div>
         )
-    }
+      })
+      }
+    </div >
+  )
 }
 
-export default MessageList
+export default MessageList;
