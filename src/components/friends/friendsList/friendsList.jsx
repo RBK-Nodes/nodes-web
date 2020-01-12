@@ -18,7 +18,7 @@ function FriendsList(props) {
             <h3>Friends</h3>
             <ul>
                 {friends.map((friend, index) => {
-                    return <Button onClick={() => { props.click(friend) }} variant="contained" color="default" style={{ marginLeft: "10px" }} >{friend}</Button>
+                    return <li><Button onClick={() => { props.click(friend) }} variant="contained" color="default" style={{ marginLeft: "10px" }} >{friend}</Button></li>
                 })}
             </ul>
         </div>

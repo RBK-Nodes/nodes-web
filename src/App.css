@@ -152,7 +152,7 @@ body {
   margin: 15px 0;
 }
 .message1 {
-  padding-left: 800px ;
+  padding-left: 85% ;
 }
 
 .message .message-username {
@@ -189,7 +189,11 @@ body {
   width: 100%;
   height: 100%;
   overflow: scroll;
-  background: var(--secondary-color);
+  background: url('./logo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 40%;
+
 }
 
 .message-list .join-room {
@@ -259,6 +263,8 @@ body {
 }
 .friends-list > h3 {
   margin: 5px 0;
+  text-align: center;
+  vertical-align: middle;
   color: var(--secondary-color);
 }
 .friends-list .friend a {

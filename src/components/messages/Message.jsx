@@ -18,7 +18,6 @@ function Message(props) {
                     <div className="message-text">{ReactEmoji.emojify(props.text)}</div>
                 </div>
             )
-
     )
 }
 export default Message
