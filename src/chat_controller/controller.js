@@ -48,13 +48,4 @@ export async function rejectFriendRequest(friendName, yourname) {
     return axios.post( url+ '/getmessages', { user1, user2 });
 }
 
-module.exports = {
-    searchUser,
-    getAllRequests,
-    getAllFriends,
-    sendFriendRequest,
-    approveFriendRequest,
-    rejectFriendRequest,
-    getChat
-}
 
