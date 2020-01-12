@@ -16,7 +16,7 @@ export function Login(props) {
             password
         };
 
-        fetch("https://nodes-chat-app.herokuapp.com/signin", {
+        fetch("https://nodes-chat-auth.herokuapp.com/signin", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json;charset=utf-8"

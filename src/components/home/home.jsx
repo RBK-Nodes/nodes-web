@@ -8,6 +8,7 @@ import SearchFriends from "../friends/searchFriends/SearchFriends.jsx";
 import io from 'socket.io-client';
 import Axios from 'axios';
 
+const url = process.env.API_URL || 'https://nodes-chat-api.herokuapp.com/'
 
 
 
@@ -24,7 +25,7 @@ export function Home(props) {
     authorization: `bearer ${localStorage.getItem("token")}`
   };
 
-  Axios.post('https://nodes-chat-app.herokuapp.com/auth', {}, {
+  Axios.post('https://nodes-chat-auth.herokuapp.com/auth', {}, {
     headers: headers
   })
     .then((response) => {
@@ -40,7 +41,7 @@ export function Home(props) {
         "refreshToken": localStorage.getItem("refreshToken")
       }
 
-      Axios.post('https://nodes-chat-app.herokuapp.com/refresh', data)
+      Axios.post('https://nodes-chat-auth.herokuapp.com/refresh', data)
         .then((response) => {
           localStorage.setItem("token", response.token)
         })
@@ -52,7 +53,7 @@ export function Home(props) {
         )
     })
 
-  const socket = io("http://localhost:5001");
+  const socket = io(url);
   return (
     <Router>
       <div className="home">

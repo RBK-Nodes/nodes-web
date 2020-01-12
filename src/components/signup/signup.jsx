@@ -22,7 +22,7 @@ export function SignUp(props) {
             password
         };
 
-        fetch("https://nodes-chat-app.herokuapp.com/signup", {
+        fetch("https://nodes-chat-auth.herokuapp.com/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json;charset=utf-8"
