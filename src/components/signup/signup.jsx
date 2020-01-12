@@ -22,7 +22,7 @@ export function SignUp(props) {
             password
         };
 
-        fetch("https://nodes-chat-app.herokuapp.com/signup", {
+        fetch("https://nodes-chat-auth.herokuapp.com/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json;charset=utf-8"
@@ -91,7 +91,6 @@ export function SignUp(props) {
                 ></Input>
                 <br />
                 <br />
-
                 <Button id="signUpBtn" type="submit" variant="contained" color="primary" >SignUp</Button>
             </form>
             <div>{badPass ? <h1>PASSWORD DOES NOT MATCH</h1> : ''}</div>

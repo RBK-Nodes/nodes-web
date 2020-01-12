@@ -31,7 +31,7 @@ export function Home(props) {
     authorization: `bearer ${localStorage.getItem("token")}`
   };
 
-  Axios.post('https://nodes-chat-app.herokuapp.com/auth', {}, {
+  Axios.post('https://nodes-chat-auth.herokuapp.com/auth', {}, {
     headers: headers
   })
     .then((response) => {
@@ -47,7 +47,7 @@ export function Home(props) {
         "refreshToken": localStorage.getItem("refreshToken")
       }
 
-      Axios.post('https://nodes-chat-app.herokuapp.com/refresh', data)
+      Axios.post('https://nodes-chat-auth.herokuapp.com/refresh', data)
         .then((response) => {
           localStorage.setItem("token", response.token)
         })

@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input'
 import { Redirect } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { signIn } from '../../auth_controller/controller.js'
 export function Login(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -15,16 +16,17 @@ export function Login(props) {
             username,
             password
         };
-
-        fetch("https://nodes-chat-app.herokuapp.com/signin", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json;charset=utf-8"
-            },
-            body: JSON.stringify(user)
-        }).then((response) => response.json())
+        //
+        // fetch("https://nodes-chat-auth.herokuapp.com/signin", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json;charset=utf-8"
+        //     },
+        //     body: JSON.stringify(user)
+        // })
+        signIn(user)
+            .then((response) => response.json())
             .then((data) => {
-                console.log('Success:', data);
                 localStorage.setItem("username", username);
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("refreshToken", data.refreshToken);
