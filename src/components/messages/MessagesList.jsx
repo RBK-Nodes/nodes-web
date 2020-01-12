@@ -6,13 +6,13 @@ function MessageList(props) {
   return (
     <div className="message-list"
     >
-
+      {console.log(props)}
       {props.chat.messages.map((message, index) => {
         return (
           //       <Message key={index} senderId={message.senderId} text={message.text} />
           <div key={index} className="message">
-            <div className="message-username">{message.senderId}</div>
-            <div className="message-text">{ReactEmoji.emojify(message.text)}</div>
+            <div className="message-username">{message}</div>
+            <div className="message-text">{ReactEmoji.emojify(message)}</div>
           </div>
         )
       })
