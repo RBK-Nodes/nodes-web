@@ -9,31 +9,17 @@ export function Login(props) {
     const [password, setPassword] = useState("");
     const [isLogged, setIslogged] = useState(false)
 
-
     var handleSubmit = e => {
         e.preventDefault();
         let user = {
             username,
             password
-        };
-
-        fetch("https://nodes-chat-auth.herokuapp.com/signin", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json;charset=utf-8"
-            },
-            body: JSON.stringify(user)
-        }).then((response) => response.json())
-            .then((data) => {
-                localStorage.setItem("username", username);
-                localStorage.setItem("token", data.token);
-                localStorage.setItem("refreshToken", data.refreshToken);
-
-                setPassword('');
-                setUsername('');
-                setIslogged(true);
-                props.login(true);
-            }).catch(err => {
+        }
+        signIn(user)
+            .then(() => {
+                setIslogged(true)
+            })
+            .catch((err) => {
                 if (err) {
                     Swal.fire({
                         icon: 'error',
@@ -44,6 +30,9 @@ export function Login(props) {
                 }
             })
     }
+
+
+
 
     if (isLogged) {
         return <Redirect to='/home' />

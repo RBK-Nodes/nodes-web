@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input'
 import { Redirect } from 'react-router-dom';
+import { signUp } from '../../auth_controller/controller.js'
+import Swal from 'sweetalert2';
 
 export function SignUp(props) {
     const [username, setUsername] = useState("");
@@ -11,34 +13,31 @@ export function SignUp(props) {
     const [badPass, setBadPass] = useState(false)
     var handleSubmit = e => {
         e.preventDefault();
-
         if (!passwordChecker()) {
-            //change to set the class of the form to red  an
             setBadPass(true);
             return;
         }
         let user = {
             username,
             password
-        };
+        }
 
-        fetch("https://nodes-chat-auth.herokuapp.com/signup", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json;charset=utf-8"
-            },
-            body: JSON.stringify(user)
-        }).then((response) => response.json())
-            .then((data) => {
-                console.log('Success:', data);
-                localStorage.setItem("username", username)
-                localStorage.setItem("token", data.token);
-                localStorage.setItem("refreshToken", data.refreshToken);
-
+        signUp(user)
+            .then(() => {
                 setPassword('')
                 setUsername('')
                 setconfirmPassword('')
                 setIslogged(true)
+            })
+            .catch(err => {
+                if (err) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'User is already registered',
+                        footer: '<a href>TRY ANOTHER NAME?</a>'
+                    })
+                }
             })
     };
 
@@ -67,8 +66,6 @@ export function SignUp(props) {
                 ></Input>
                 <br />
                 <br />
-
-                <label >  </label>
                 <Input
                     placeholder="enter password"
                     type="password"
@@ -81,7 +78,6 @@ export function SignUp(props) {
                 <br />
                 <br />
 
-                <label >   </label>
                 <Input
                     placeholder="confirm your password"
                     type="password"

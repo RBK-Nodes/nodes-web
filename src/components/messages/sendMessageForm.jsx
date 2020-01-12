@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import io from 'socket.io-client';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import { FaTelegramPlane } from 'react-icons/fa'

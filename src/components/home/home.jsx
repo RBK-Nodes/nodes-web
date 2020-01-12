@@ -7,6 +7,8 @@ import FriendRequestList from "../friends/firendRequest/requestsList.jsx";
 import SearchFriends from "../friends/searchFriends/SearchFriends.jsx";
 import io from 'socket.io-client';
 import Axios from 'axios';
+import { userValidator, refreshTokenUpdater } from '../../auth_controller/controller.js'
+
 require('dotenv').config()
 
 const url = process.env.API_URL || 'https://nodes-chat-api.herokuapp.com/'
@@ -16,45 +18,22 @@ const url = process.env.API_URL || 'https://nodes-chat-api.herokuapp.com/'
 export function Home(props) {
   const [loggedIn, setLoggedIn] = useState(true);
 
-  var showMe = () => {
-    console.log('process.env.AUTH_URL = ', process.env.AUTH_URL)
-    console.log('process.env.AUTH_REFRESH_URL = ', process.env.AUTH_REFRESH_URL)
-    console.log('process.env.CHAT_URL = ', process.env.CHAT_URL)
-  }
+
 
   if (!loggedIn) {
     return <Redirect to="/login" />;
   }
 
-  // setInterval(function () {
-  let headers = {
-    "Content-Type": "application/json",
-    authorization: `bearer ${localStorage.getItem("token")}`
-  };
-
-  Axios.post('https://nodes-chat-auth.herokuapp.com/auth', {}, {
-    headers: headers
-  })
-    .then((response) => {
+  userValidator()
+    .then(response => {
+      console.log('responsoe', response)
       if (response.data === "valid") {
         console.log("ITS ALL GOOD BABY")
       }
-
     })
-    .catch((err) => {
-      var username = localStorage.getItem("username")
-      var data = {
-        "username": username,
-        "refreshToken": localStorage.getItem("refreshToken")
-      }
-
-      Axios.post('https://nodes-chat-auth.herokuapp.com/refresh', data)
-        .then((response) => {
-          localStorage.setItem("token", response.token)
-        })
-
+    .catch(() => {
+      refreshTokenUpdater()
         .catch(() => {
-          localStorage.removeItem("token")
           setLoggedIn(false)
         })
     })
@@ -83,10 +62,6 @@ export function Home(props) {
                 {" "}
                 Search{" "}
               </Link>
-            </ul>
-            <ul>
-              <button onClick={showMe}>showME{" "}
-              </button>
             </ul>
           </ul>
         </nav>
