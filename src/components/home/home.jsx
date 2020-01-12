@@ -1,5 +1,5 @@
 import { Redirect } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Chat from "../chat/chat.jsx";
 import Button from "@material-ui/core/Button";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -7,12 +7,19 @@ import FriendRequestList from "../friends/firendRequest/requestsList.jsx";
 import SearchFriends from "../friends/searchFriends/SearchFriends.jsx";
 import io from 'socket.io-client';
 import Axios from 'axios';
+require('dotenv').config()
 
 
 
 
 export function Home(props) {
   const [loggedIn, setLoggedIn] = useState(true);
+
+  var showMe = () => {
+    console.log('process.env.AUTH_URL = ', process.env.AUTH_URL)
+    console.log('process.env.AUTH_REFRESH_URL = ', process.env.AUTH_REFRESH_URL)
+    console.log('process.env.CHAT_URL = ', process.env.CHAT_URL)
+  }
 
   if (!loggedIn) {
     return <Redirect to="/login" />;
@@ -48,8 +55,7 @@ export function Home(props) {
         .catch(() => {
           localStorage.removeItem("token")
           setLoggedIn(false)
-        }
-        )
+        })
     })
 
   const socket = io("http://localhost:5001");
@@ -76,6 +82,10 @@ export function Home(props) {
                 {" "}
                 Search{" "}
               </Link>
+            </ul>
+            <ul>
+              <button onClick={showMe}>showME{" "}
+              </button>
             </ul>
           </ul>
         </nav>
