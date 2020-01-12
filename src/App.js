@@ -4,6 +4,7 @@ import { SignUp } from "./components/signup/signup.jsx";
 import { Home } from "./components/home/home.jsx";
 import logo from "./logo.png";
 import "./App.css";
+
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {

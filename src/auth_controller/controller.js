@@ -7,16 +7,16 @@ const Axios = require('axios')
 
 const url = process.env.AUTH || 'https://nodes-chat-auth.herokuapp.com'
 
-function signIn(user) {
+export function signIn(user) {
     return userAuthenticator(user, '/signin')
 }
 
-function signUp(user) {
+export function signUp(user) {
     return userAuthenticator(user, '/signup')
 }
 
 
-function userAuthenticator(user, method) {
+export function userAuthenticator(user, method) {
     return fetch(url + method, {
         method: "POST",
         headers: {
@@ -33,10 +33,10 @@ function userAuthenticator(user, method) {
         })
 }
 
-async function reAuthenticate(data = {}, method, options) {
+export async function reAuthenticate(data = {}, method, options) {
     return Axios.post(url + method, data, options)
 }
-async function userValidator() {
+export async function userValidator() {
     return reAuthenticate({}, '/auth', {
         headers: {
             "Content-Type": "application/json",
@@ -44,7 +44,7 @@ async function userValidator() {
         }
     })
 }
-function refreshTokenUpdater() {
+export function refreshTokenUpdater() {
     const data = {
         "username": localStorage.getItem("username"),
         "refreshToken": localStorage.getItem("refreshToken")
@@ -56,10 +56,4 @@ function refreshTokenUpdater() {
         .catch((err) => {
             localStorage.removeItem("token")
         })
-}
-module.exports = {
-    signIn,
-    signUp,
-    userValidator,
-    refreshTokenUpdater
 }
