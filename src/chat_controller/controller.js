@@ -5,37 +5,37 @@ const axios = require('axios').create({
 });
 const url = process.env.API_URL || 'https://nodes-chat-api.herokuapp.com'
 
-async function searchUser(username) {
+export async function searchUser(username) {
 
     return axios.post(url + '/finduser', { username });
 }
 
-async function getAllRequests(username) {
+export async function getAllRequests(username) {
     return axios.post(url + '/showfriendrequest', { username });
 }
 
-async function getAllFriends(username) {
+export async function getAllFriends(username) {
 
     return axios.post(url + '/getfriends', { username });
 
 }
 
 
-async function sendFriendRequest(friendName, yourname) {
+export async function sendFriendRequest(friendName, yourname) {
     return axios.post(url + '/sendfriendrequest', {
         requester: yourname,
         target: friendName
     });
 }
 
-async function approveFriendRequest(friendName, yourname) {
+export async function approveFriendRequest(friendName, yourname) {
     return axios.post(url + '/acceptfriendrequest', {
         requester: friendName,
         target: yourname
     })
 }
 
-async function rejectFriendRequest(friendName, yourname) {
+export async function rejectFriendRequest(friendName, yourname) {
 
     return axios.post(url+'/rejectfriendrequest', {
         requester: friendName,
@@ -44,7 +44,7 @@ async function rejectFriendRequest(friendName, yourname) {
 
 }
 
-async function getChat(user1, user2) {
+ export async function getChat(user1, user2) {
     return axios.post( url+ '/getmessages', { user1, user2 });
 }
 
@@ -57,3 +57,4 @@ module.exports = {
     rejectFriendRequest,
     getChat
 }
+
