@@ -1,6 +1,6 @@
 ## Discription
 This is a realtime chatting app , simplified logic of chatting with friends athitecture.</br>
-Technology used :</br>
+### Technology Used :</br>
 1 ReactJS Framework.</br>
 2 socketIO-client.
 
