@@ -1,8 +1,8 @@
 ### Discription
 This realtime is chatting app , chatting with friends, 
-Technology used :
-1 ReactJS Framework</br>
-2 socketIO-client
+Technology used :</br>
+1 ReactJS Framework.</br>
+2 socketIO-client.
 
 Authentication:
 1 JWT
