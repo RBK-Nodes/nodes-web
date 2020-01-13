@@ -7,7 +7,7 @@ Technology used :</br>
 Authentication:</br>
 1 JWT
 
-Database:
+Database:</br>
 Postgress
 
 ### TRY THE APP ONLINE
