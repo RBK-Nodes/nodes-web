@@ -5,11 +5,6 @@ import { FaRegHandPointLeft } from 'react-icons/fa'
 import MessageList from "../messages/MessagesList.jsx";
 import SendMessageForm from "../messages/sendMessageForm.jsx";
 import { getChat } from '../../chat_controller/controller';
-// import GifLoader from 'react-gif-loader';
-
-
-
-
 
 export function Chat(props) {
   const [chat, setChat] = useState({ id: null, messages: [] })
@@ -49,10 +44,8 @@ export function Chat(props) {
           return <MessageList chat={chat} />
         } else {
           return <div className="clickFriends" >
-            <br />
-            <br />
-            <br />
-            <FaRegHandPointLeft /> {" "}  Click on a Friend to Start a Chat
+
+            <FaRegHandPointLeft style={{ padding: "30%" }} /> {" "}  Click on a Friend to Start a Chat
           </div>
         }
       })()}
