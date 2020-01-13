@@ -21,7 +21,6 @@ export function signIn(user) {
 export function signUp(user) {
     return userAuthenticator(user, '/signup')
 }
-
 //sends signUp requst with specific user
 
 export function userAuthenticator(user, method) {
