@@ -16,9 +16,7 @@ You can find the app online at
 
 ### Getting Started
 clone this repo </br>
-Note : you need other</br>
 ## Available Scripts
-
 In the project directory, you can run:
 
 ### `npm start`
