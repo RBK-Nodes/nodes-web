@@ -4,7 +4,7 @@ Technology used :</br>
 1 ReactJS Framework.</br>
 2 socketIO-client.
 
-Authentication:
+Authentication:</br>
 1 JWT
 
 Database:
