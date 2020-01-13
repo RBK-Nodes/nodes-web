@@ -25,12 +25,6 @@ export function Home(props) {
   }
 
   userValidator()
-    .then(response => {
-      console.log('responsoe', response)
-      if (response.data === "valid") {
-        console.log("ITS ALL GOOD BABY")
-      }
-    })
     .catch(() => {
       refreshTokenUpdater()
         .catch(() => {
@@ -44,25 +38,27 @@ export function Home(props) {
       <div className="home">
         <nav className="navigate">
           <ul className="navbarhome">
-            <ul>
-              <Link to={"/chat"} className="nav-link">
-                {" "}
-                Chat
-                {" "}
-              </Link>
-            </ul>
-            <ul>
-              <Link to={"/requests"} className="nav-link">
-                {" "}
-                Friends Requests{" "}
-              </Link>
-            </ul>
-            <ul>
-              <Link to={"/search"} className="nav-link">
-                {" "}
-                Search{" "}
-              </Link>
-            </ul>
+            {/* <ul> */}
+            <Link to={"/chat"} className="nav-link">
+              {" "}
+              <Button>Chat</Button>
+              {" "}
+            </Link>
+            {/* </ul> */}
+            {/* <ul> */}
+            <Link to={"/requests"} className="nav-link">
+              {" "}
+              <Button>Friends Requests</Button>
+              {" "}
+            </Link>
+            {/* </ul> */}
+            {/* <ul> */}
+            <Link to={"/search"} className="nav-link">
+              {" "}
+              <Button>Search</Button>
+              {" "}
+            </Link>
+            {/* </ul> */}
           </ul>
         </nav>
 

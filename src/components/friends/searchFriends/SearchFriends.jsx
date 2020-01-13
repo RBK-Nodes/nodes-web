@@ -25,8 +25,6 @@ export var SearchFriends = (props) => {
                         focusConfirm: false,
                     }).then((result) => {
                         if (result.value) {
-                            //add user
-                            console.log('should be sending !!!')
                             sendFriendRequest(username.data, localStorage.getItem("username"))
                                 .then(ok => {
                                     Swal.fire(
@@ -41,7 +39,7 @@ export var SearchFriends = (props) => {
                 else {
                     Swal.fire({
                         title: `<strong> ${username.data} NOT FOUND </strong>`,
-                        icon: 'rrror',
+                        icon: 'error',
                         showCancelButton: true,
                         cancelButtonColor: '#d33',
                         focusCancel: false,

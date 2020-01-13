@@ -18,16 +18,16 @@ export function Login(props) {
         signIn(user)
             .then(() => {
                 setIslogged(true)
+                props.login(true)
             })
             .catch((err) => {
-                if (err) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Wrong username or password',
-                        footer: '<a href>TRY AGIAN?</a>'
-                    })
-                }
+                console.log(err)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Wrong username or password',
+                    footer: '<a href>TRY AGIAN?</a>'
+                })
             })
     }
 
