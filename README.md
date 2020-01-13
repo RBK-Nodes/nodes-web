@@ -1,7 +1,7 @@
 ### Disciption
 This realtime is chatting app , chatting with friends, 
 Technology used :
-1 ReactJS Framework
+1 ReactJS Framework</br>
 2 socketIO-client
 
 Authentication:
@@ -15,8 +15,8 @@ You can find the app online at
 [http://nodes-chat.herokuapp.com](http://nodes-chat.herokuapp.com)
 
 ### Getting Started
-clone this repo 
-Note : you need other
+clone this repo </br>
+Note : you need other</br>
 ## Available Scripts
 
 In the project directory, you can run:
@@ -29,6 +29,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
  
-
- ### `ABOUT NODES`
-nodes is a team consi
