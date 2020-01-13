@@ -5,10 +5,12 @@ import { Redirect } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { signIn } from '../../auth_controller/controller.js'
 export function Login(props) {
+    // using react hooks takes the user name and the password  
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [isLogged, setIslogged] = useState(false)
 
+    //handling the submit of the password and the username 
     var handleSubmit = e => {
         e.preventDefault();
         let user = {
