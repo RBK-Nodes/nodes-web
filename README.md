@@ -1,4 +1,4 @@
-### Discription
+## Discription
 This realtime is chatting app , chatting with friends, 
 Technology used :</br>
 1 ReactJS Framework.</br>
