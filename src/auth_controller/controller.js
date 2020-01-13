@@ -6,16 +6,23 @@ const Axios = require('axios')
         }
     })
 
+
 const url = process.env.AUTH || 'https://nodes-chat-auth.herokuapp.com'
+
+//  @params data  object 
+//  @params method  string
+//  @params options  object 
 
 export function signIn(user) {
     return userAuthenticator(user, '/signin')
 }
+//sends signIn requst with specific user
 
 export function signUp(user) {
     return userAuthenticator(user, '/signup')
 }
 
+//sends signUp requst with specific user
 
 export function userAuthenticator(user, method) {
     return fetch(url + method, {
@@ -32,11 +39,14 @@ export function userAuthenticator(user, method) {
             localStorage.setItem("refreshToken", data.refreshToken);
         })
 }
+// abstract function for  sends http requsts to URL provided  to  authenticate user
+// returns a promise
 
-export async function reAuthenticate(data = {}, method, options) {
+export function reAuthenticate(data = {}, method, options) {
     return Axios.post(url + method, data, options)
 }
-export async function userValidator() {
+//an abstract function used to re-authicate user token 
+export function userValidator() {
     return reAuthenticate({}, '/auth', {
         headers: {
             "Content-Type": "application/json",
@@ -44,6 +54,7 @@ export async function userValidator() {
         }
     })
 }
+//validates user if he has valid token or not
 export function refreshTokenUpdater() {
     const data = {
         "username": localStorage.getItem("username"),
@@ -57,3 +68,4 @@ export function refreshTokenUpdater() {
             localStorage.removeItem("token")
         })
 }
+//manages user refresh token sedning a method to the method refresh
